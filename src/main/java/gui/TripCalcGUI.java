@@ -16,18 +16,23 @@ public class TripCalcGUI extends JFrame{
     private JPanel paLeft = new JPanel();
     private JPanel paRight = new JPanel();
 
-    private JButton btSubmitT;
-    private JTextField txOutputT;
-    private JTextField txFuelConT;
-    private JTextField txCargoT;
-    private JTextField txAxlesT;
-    private JCheckBox chbAdBlueT;
-    private JComboBox cbTypeFuelT;
-    private JLabel lbFuelConT;
-    private JLabel lbTypeFuelT;
-    private JLabel lbCargoT;
-    private JLabel lbAxlesT;
-    private JLabel lbAdBlue;
+    private JButton btSubmitT = new JButton();
+    private JTextField txOutputT = new JTextField();
+    private JTextField txFuelConT= new JTextField();
+    private JTextField txCargoT= new JTextField();
+    private JTextField txAxlesT= new JTextField();
+    private JCheckBox chbAdBlueT = new JCheckBox();
+    private JComboBox cbTypeFuelT = new JComboBox();
+    private JLabel lbFuelConT = new JLabel();
+    private JLabel lbTypeFuelT= new JLabel();
+    private JLabel lbCargoT= new JLabel();
+    private JLabel lbAxlesT= new JLabel();
+    private JLabel lbAdBlue= new JLabel();
+    private JPanel pa1 = new JPanel();
+    private JPanel pa2 = new JPanel();
+    private JPanel pa3 = new JPanel();
+    private JPanel pa4 = new JPanel();
+    private JPanel pa5 = new JPanel();
     private JButton btSubmitCar = new JButton("Submit");
     private JTextField txOutputCar = new JTextField();
     private JPanel paTop = new JPanel();
@@ -44,7 +49,7 @@ public class TripCalcGUI extends JFrame{
     public TripCalcGUI() throws HeadlessException
     {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        this.setSize(500, 400);
+        this.setSize(700, 250);
         this.setLocationRelativeTo(null);
         init();
     }
@@ -54,6 +59,9 @@ public class TripCalcGUI extends JFrame{
         Container con = this.getContentPane();
         con.setLayout(new GridLayout(1,2));
 
+        JPanel paRight = new JPanel();
+        paRight.setLayout(new GridLayout(7,1));
+        paRight.setBorder(new TitledBorder("Truck"));
         con.add(paLeft);
         paLeft.setLayout(new GridLayout(5, 1));
         paLeft.setBorder(new TitledBorder("Car"));
@@ -71,6 +79,41 @@ public class TripCalcGUI extends JFrame{
         paMiddle.add(cbTypeOfFuelCar);
         paBottom.add(lbCargoCar);
         paBottom.add(txCargoCar);
+
+        pa1.setLayout(new GridLayout(1,2));
+        pa2.setLayout(new GridLayout(1,2));
+        pa3.setLayout(new GridLayout(1,2));
+        pa4.setLayout(new GridLayout(1,2));
+        pa5.setLayout(new GridLayout(1,2));
+
+
+        lbFuelConT.setText("Average Fuel Consumption");
+        lbTypeFuelT.setText("Type of Fuel");
+        lbCargoT.setText("Cargo in kg");
+        lbAxlesT.setText("Axles");
+        lbAdBlue.setText("Use ad Blue");
+        btSubmitT.setText("Submit");
+
+        pa1.add(lbFuelConT);
+        pa1.add(txFuelConT);
+        pa2.add(lbTypeFuelT);
+        pa2.add(cbTypeFuelT);
+        pa3.add(lbCargoT);
+        pa3.add(txCargoT);
+        pa4.add(lbAxlesT);
+        pa4.add(txAxlesT);
+        pa5.add(lbAdBlue);
+        pa5.add(chbAdBlueT);
+
+        paRight.add(pa1);
+        paRight.add(pa2);
+        paRight.add(pa3);
+        paRight.add(pa4);
+        paRight.add(pa5);
+        paRight.add(btSubmitT);
+        paRight.add(txOutputT);
+
+        con.add(paRight);
 
     }
 
