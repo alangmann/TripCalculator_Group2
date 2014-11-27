@@ -120,12 +120,7 @@
         <entry key="$PROJECT_DIR$">
           <value>
             <SvnBranchConfiguration>
-              <option name="branchUrls">
-                <list>
-                  <option value="https://github.com/alangmann/TripCalculator_Group2/branches" />
-                </list>
-              </option>
-              <option name="trunkUrl" value="https://github.com/alangmann/TripCalculator_Group2/trunk" />
+              <option name="trunkUrl" value="" />
             </SvnBranchConfiguration>
           </value>
         </entry>
