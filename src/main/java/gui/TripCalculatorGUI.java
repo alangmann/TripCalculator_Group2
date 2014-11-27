@@ -1,6 +1,8 @@
 package gui;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * Created by Corinna on 27.11.2014.
@@ -33,5 +35,22 @@ public class TripCalculatorGUI {
     private JLabel lbFuelConsumptionCar;
     private JLabel lbTypeOfFuelCar;
     private JLabel lbCargoCar;
+
+    public TripCalculatorGUI() {
+        btSubmitT.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+
+            }
+        });
+    }
+
+
+    public static void main(String[] args)
+    {
+        new TripCalculatorGUI()
+    }
+
 
 }
