@@ -1,13 +1,17 @@
 package gui;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
  * Created by Corinna on 27.11.2014.
  */
-public class TripCalculatorGUI {
+public class TripCalcGUI extends JFrame{
+
+
+
     private JPanel paLeft;
     private JPanel paRight;
 
@@ -36,20 +40,28 @@ public class TripCalculatorGUI {
     private JLabel lbTypeOfFuelCar;
     private JLabel lbCargoCar;
 
-    public TripCalculatorGUI() {
-        btSubmitT.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e)
-            {
 
-            }
-        });
+    public TripCalcGUI() throws HeadlessException
+    {
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setSize(500, 400);
+        this.setLocationRelativeTo(null);
+        init();
+    }
+
+    public void init()
+    {
+        Container con = this.getContentPane();
+        con.setLayout(new GridLayout(2,1));
+
+
+
     }
 
 
     public static void main(String[] args)
     {
-        new TripCalculatorGUI()
+        new TripCalcGUI().setVisible(true);
     }
 
 
