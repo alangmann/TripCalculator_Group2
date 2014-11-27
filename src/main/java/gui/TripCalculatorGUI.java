@@ -8,6 +8,20 @@ import javax.swing.*;
 public class TripCalculatorGUI {
     private JPanel paLeft;
     private JPanel paRight;
+
+    private JButton btSubmitT;
+    private JTextField txOutputT;
+    private JTextField txFuelConT;
+    private JTextField txCargoT;
+    private JTextField txAxlesT;
+    private JCheckBox chbAdBlueT;
+    private JComboBox cbTypeFuelT;
+    private JLabel lbFuelConT;
+    private JLabel lbTypeFuelT;
+    private JLabel lbCargoT;
+    private JLabel lbAxlesT;
+    private JLabel lbAdBlue;
+
     private JButton btSubmitCar;
     private JTextField txOutputCar;
     private JPanel paTop;
@@ -19,4 +33,5 @@ public class TripCalculatorGUI {
     private JLabel lbFuelConsumptionCar;
     private JLabel lbTypeOfFuelCar;
     private JLabel lbCargoCar;
+
 }
