@@ -15,9 +15,15 @@ public class Calculator
 
     private LinkedList<Route> routeList = new LinkedList<Route>();
 
+
     public void calculateCo2Consumption(Route route, Vehicle vehicle)
     {
+        double factor = 0;
+        if(route.getTypeOfRoute().equals("Highway")){factor = 1;}
+        else if(route.getTypeOfRoute().equals("CountryRoad")){factor = 1.2;}
+        else if(route.getTypeOfRoute().equals("GravelRoad")){factor = 2;}
 
+        double co2 = route.getDistance() * vehicle.getAverageConsumption() * route.getSlope() * factor;
     }
 
     public void calculateTotalCostOfRoute(Route route, Vehicle vehicle, String dayOfWeek)
