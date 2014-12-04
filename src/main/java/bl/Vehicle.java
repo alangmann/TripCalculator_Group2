@@ -5,22 +5,22 @@ package bl;
  */
 public class Vehicle
 {
-    private double averageConsumotion;
+    private double averageConsumption;
     private FuelType typeOfFuel;
     private int cargo;
 
-    public Vehicle(FuelType typeOfFuel, int cargo, double averageConsumotion) {
+    public Vehicle(FuelType typeOfFuel, int cargo, double averageConsumption) {
         this.typeOfFuel = typeOfFuel;
         this.cargo = cargo;
-        this.averageConsumotion = averageConsumotion;
+        this.averageConsumption = averageConsumption;
     }
 
-    public double getAverageConsumotion() {
-        return averageConsumotion;
+    public double getAverageConsumption() {
+        return averageConsumption;
     }
 
-    public void setAverageConsumotion(double averageConsumotion) {
-        this.averageConsumotion = averageConsumotion;
+    public void setAverageConsumption(double averageConsumption) {
+        this.averageConsumption = averageConsumption;
     }
 
     public int getCargo() {
@@ -46,7 +46,7 @@ public class Vehicle
 
         Vehicle vehicle = (Vehicle) o;
 
-        if (Double.compare(vehicle.averageConsumotion, averageConsumotion) != 0) return false;
+        if (Double.compare(vehicle.averageConsumption, averageConsumption) != 0) return false;
         if (cargo != vehicle.cargo) return false;
         if (typeOfFuel != vehicle.typeOfFuel) return false;
 
@@ -57,7 +57,7 @@ public class Vehicle
     public int hashCode() {
         int result;
         long temp;
-        temp = Double.doubleToLongBits(averageConsumotion);
+        temp = Double.doubleToLongBits(averageConsumption);
         result = (int) (temp ^ (temp >>> 32));
         result = 31 * result + (typeOfFuel != null ? typeOfFuel.hashCode() : 0);
         result = 31 * result + cargo;
@@ -68,7 +68,7 @@ public class Vehicle
     @Override
     public String toString() {
         return "Vehicle{" +
-                "averageConsumotion=" + averageConsumotion +
+                "averageConsumption=" + averageConsumption +
                 ", typeOfFuel=" + typeOfFuel +
                 ", cargo=" + cargo +
                 '}';
