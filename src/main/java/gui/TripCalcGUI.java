@@ -1,5 +1,7 @@
 package gui;
 
+import bl.Calculator;
+
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
@@ -121,6 +123,8 @@ public class TripCalcGUI extends JFrame{
     public static void main(String[] args)
     {
         new TripCalcGUI().setVisible(true);
+        Calculator calc = new Calculator();
+        calc.init();
     }
 
 
