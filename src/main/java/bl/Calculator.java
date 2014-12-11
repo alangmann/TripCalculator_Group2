@@ -56,8 +56,10 @@ public class Calculator
                             Double.parseDouble(strArray[3]), Double.parseDouble(strArray[1]));
 
                     routeList.add(route);
+
                 }
 
+                System.out.println(routeList.toString());
                 i++;
 
 

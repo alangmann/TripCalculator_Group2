@@ -117,8 +117,22 @@ public class TripCalcGUI extends JFrame{
 
         con.add(paRight);
 
+        btSubmitCar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                datenAutoEinlesen(e);
+            }
+        });
+
     }
 
+
+    public void datenAutoEinlesen(ActionEvent e)
+    {
+        String fuelConsumption = txFuelConsumptionCar.getText();
+        String cargo = txCargoCar.getText();
+        String typeOfFuel = cbTypeOfFuelCar.getSelectedItem().toString();
+    }
 
     public static void main(String[] args)
     {
@@ -126,6 +140,8 @@ public class TripCalcGUI extends JFrame{
         Calculator calc = new Calculator();
         calc.init();
     }
+
+    //ksdfdsfsdf
 
 
 }
