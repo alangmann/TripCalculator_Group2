@@ -50,6 +50,9 @@ public class TripCalcGUI extends JFrame{
     private JLabel lbFuelConsumptionCar = new JLabel("Fuel consumption: ");
     private JLabel lbTypeOfFuelCar = new JLabel("Type of fuel: ");
     private JLabel lbCargoCar = new JLabel("Cargo in kg: ");
+    private ButtonGroup gp = new ButtonGroup();
+    private JRadioButton rbCar = new JRadioButton();
+    private JRadioButton rbTruck = new JRadioButton();
 
     private Calculator calc = new Calculator();
     private LinkedList<Route> routeList = new LinkedList<Route>();
@@ -70,12 +73,28 @@ public class TripCalcGUI extends JFrame{
         Container con = this.getContentPane();
         con.setLayout(new GridLayout(1,2));
 
+        rbCar.setText("Car");
+        rbTruck.setText("Truck");
+        gp.add(rbCar);
+        gp.add(rbTruck);
+        rbCar.setSelected(true);
+
+        rbCar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(rbCar.isSelected())
+                {
+                }
+            }
+        });
+
         JPanel paRight = new JPanel();
-        paRight.setLayout(new GridLayout(7,1));
+        paRight.setLayout(new GridLayout(8,1));
         paRight.setBorder(new TitledBorder("Truck"));
         con.add(paLeft);
-        paLeft.setLayout(new GridLayout(5, 1));
+        paLeft.setLayout(new GridLayout(6, 1));
         paLeft.setBorder(new TitledBorder("Car"));
+        paLeft.add(rbCar);
         paLeft.add(paTop);
         paLeft.add(paMiddle);
         paLeft.add(paBottom);
@@ -116,6 +135,7 @@ public class TripCalcGUI extends JFrame{
         pa5.add(lbAdBlue);
         pa5.add(chbAdBlueT);
 
+        paRight.add(rbTruck);
         paRight.add(pa1);
         paRight.add(pa2);
         paRight.add(pa3);
