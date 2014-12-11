@@ -1,6 +1,7 @@
 package gui;
 
 import bl.Calculator;
+import bl.FuelType;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
@@ -47,6 +48,7 @@ public class TripCalcGUI extends JFrame{
     private JLabel lbTypeOfFuelCar = new JLabel("Type of fuel: ");
     private JLabel lbCargoCar = new JLabel("Cargo in kg: ");
 
+    private Calculator calc = new Calculator();
 
     public TripCalcGUI() throws HeadlessException
     {
@@ -54,6 +56,7 @@ public class TripCalcGUI extends JFrame{
         this.setSize(700, 250);
         this.setLocationRelativeTo(null);
         init();
+        datenAutoEinlesen();
     }
 
     public void init()
@@ -120,24 +123,30 @@ public class TripCalcGUI extends JFrame{
         btSubmitCar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                datenAutoEinlesen(e);
+
+                calc.init();
             }
         });
 
     }
 
-    public void datenAutoEinlesen(ActionEvent e)
+    public void datenAutoEinlesen()
     {
         String fuelConsumption = txFuelConsumptionCar.getText();
         String cargo = txCargoCar.getText();
+
+        for(FuelType f : FuelType.values())
+        {
+            cbTypeOfFuelCar.addItem(f.toString());
+        }
+
         String typeOfFuel = cbTypeOfFuelCar.getSelectedItem().toString();
     }
 
     public static void main(String[] args)
     {
         new TripCalcGUI().setVisible(true);
-        Calculator calc = new Calculator();
-        calc.init();
+
     }
 
     //ksdfdsfsdf

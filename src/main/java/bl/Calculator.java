@@ -65,7 +65,6 @@ public class Calculator
                 {
                     strArray = str.split(";");
 
-
                     Route route = new Route(Double.parseDouble(strArray[0].replace(",",".")), RouteType.valueOf(strArray[2]),
                             Double.parseDouble(strArray[3].replace(",",".")), Double.parseDouble(strArray[1].replace(",",".")));
 
