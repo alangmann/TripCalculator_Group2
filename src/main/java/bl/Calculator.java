@@ -17,17 +17,23 @@ public class Calculator
 
     public double calculateCo2Consumption(Route route, Vehicle vehicle)
     {
-        double factor = 101;
+        double factor;
+        if(route.getSlope() < 0)
+        {
+            return 0;
+        }
         if(route.getTypeOfRoute().equals("Highway"))
         {
             factor = 1;
 
         }
         else if(route.getTypeOfRoute().equals("CountryRoad")){factor = 1.2;}
-        else if(route.getTypeOfRoute().equals("GravelRoad"))
+        else
         {
             factor = 2;
         }
+
+
 
         double co2 = route.getDistance() * vehicle.getAverageConsumption() * route.getSlope() * factor;
         return co2;

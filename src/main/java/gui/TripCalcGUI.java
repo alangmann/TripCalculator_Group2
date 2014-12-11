@@ -55,6 +55,7 @@ public class TripCalcGUI extends JFrame{
     private LinkedList<Route> routeList = new LinkedList<Route>();
     private Route route;
     private Vehicle v;
+    private double co2 = 0;
 
 
     public TripCalcGUI() throws HeadlessException
@@ -138,8 +139,15 @@ public class TripCalcGUI extends JFrame{
             public void actionPerformed(ActionEvent e)
             {
                 datenAutoEinlesen();
-                double co2 = calc.calculateCo2Consumption(route, v);
+
+
+                for(Route r : routeList)
+                {
+                    co2+= calc.calculateCo2Consumption(route, v);
+                }
+
                 txOutputCar.setText(co2+"");
+
             }
         });
 
@@ -192,8 +200,6 @@ public class TripCalcGUI extends JFrame{
     {
         double fuelConsumption = Double.parseDouble(txFuelConsumptionCar.getText().replace(",", "."));
         int cargo = Integer.parseInt(txCargoCar.getText());
-
-
         FuelType typeOfFuel = FuelType.valueOf(cbTypeOfFuelCar.getSelectedItem().toString());
         v = new Vehicle(typeOfFuel, cargo, fuelConsumption);
     }
