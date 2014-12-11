@@ -174,12 +174,10 @@ public class TripCalcGUI extends JFrame{
                 }
 
 
-                System.out.println(routeList.toString());
                 i++;
 
 
             }
-            System.out.println("LIST:"+routeList.toString());
             br.close();
 
         } catch (Exception ex)
