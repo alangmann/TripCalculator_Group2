@@ -138,7 +138,8 @@ public class TripCalcGUI extends JFrame{
             public void actionPerformed(ActionEvent e)
             {
                 datenAutoEinlesen();
-                calc.calculateCo2Consumption(route, v);
+                double co2 = calc.calculateCo2Consumption(route, v);
+                txOutputCar.setText(co2+"");
             }
         });
 
