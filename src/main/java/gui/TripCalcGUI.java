@@ -63,7 +63,6 @@ public class TripCalcGUI extends JFrame{
         this.setSize(700, 250);
         this.setLocationRelativeTo(null);
         init();
-        datenAutoEinlesen();
     }
 
     public void init()
@@ -128,14 +127,18 @@ public class TripCalcGUI extends JFrame{
         con.add(paRight);
         readCSV();
 
+        for(FuelType f : FuelType.values())
+        {
+            cbTypeOfFuelCar.addItem(f.toString());
+        }
+
+
         btSubmitCar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e)
             {
                 datenAutoEinlesen();
-
                 calc.calculateCo2Consumption(route, v);
-
             }
         });
 
@@ -191,23 +194,14 @@ public class TripCalcGUI extends JFrame{
         double fuelConsumption = Double.parseDouble(txFuelConsumptionCar.getText().replace(",", "."));
         int cargo = Integer.parseInt(txCargoCar.getText());
 
-        for(FuelType f : FuelType.values())
-        {
-            cbTypeOfFuelCar.addItem(f.toString());
-        }
 
         FuelType typeOfFuel = FuelType.valueOf(cbTypeOfFuelCar.getSelectedItem().toString());
         v = new Vehicle(typeOfFuel, cargo, fuelConsumption);
-
-
-
     }
-
 
     public static void main(String[] args)
     {
         new TripCalcGUI().setVisible(true);
-
     }
 
 
