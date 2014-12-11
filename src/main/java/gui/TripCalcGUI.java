@@ -211,5 +211,4 @@ public class TripCalcGUI extends JFrame{
     }
 
 
-
 }

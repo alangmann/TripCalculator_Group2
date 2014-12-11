@@ -14,7 +14,7 @@ public class Calculator
     private static double CO2_CONSUMPTION_DIESEL;
     private static double CO2_CONSUMPTION_PETROL;
 
-
+//sdfsdfdf
 
     public double calculateCo2Consumption(Route route, Vehicle vehicle)
     {
