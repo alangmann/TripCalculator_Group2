@@ -126,7 +126,6 @@ public class TripCalcGUI extends JFrame{
 
     }
 
-
     public void datenAutoEinlesen(ActionEvent e)
     {
         String fuelConsumption = txFuelConsumptionCar.getText();

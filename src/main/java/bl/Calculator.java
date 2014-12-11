@@ -63,16 +63,16 @@ public class Calculator
             {
                 if(i!= 0)
                 {
-                    //an Stelle 3 und 1 replace , durch .
                     strArray = str.split(";");
 
 
-                    Route route = new Route(Double.parseDouble(strArray[0]), RouteType.valueOf(strArray[2]),
-                            Double.parseDouble(strArray[3]), Double.parseDouble(strArray[1]));
+                    Route route = new Route(Double.parseDouble(strArray[0].replace(",",".")), RouteType.valueOf(strArray[2]),
+                            Double.parseDouble(strArray[3].replace(",",".")), Double.parseDouble(strArray[1].replace(",",".")));
 
                     routeList.add(route);
 
                 }
+
 
                 System.out.println(routeList.toString());
                 i++;
