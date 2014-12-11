@@ -139,7 +139,7 @@ public class TripCalcGUI extends JFrame{
             public void actionPerformed(ActionEvent e)
             {
                 datenAutoEinlesen();
-
+                co2= 0;
 
                 for(Route r : routeList)
                 {
