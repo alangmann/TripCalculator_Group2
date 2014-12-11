@@ -11,13 +11,25 @@ import java.util.LinkedList;
  */
 public class Calculator
 {
-    private static double CO2_CONSUMPTION_DIESEL;
-    private static double CO2_CONSUMPTION_PETROL;
+    private static double CO2_CONSUMPTION_DIESEL = 0.0265;
+    private static double CO2_CONSUMPTION_PETROL = 0.0236;
 
 
     public double calculateCo2Consumption(Route route, Vehicle vehicle)
     {
         double factor;
+        double co2Consumption = -1;
+
+        if(vehicle.getTypeOfFuel().equals(FuelType.Diesel))
+        {
+            co2Consumption = vehicle.getAverageConsumption()*CO2_CONSUMPTION_DIESEL;
+        }
+        else if(vehicle.getTypeOfFuel().equals(FuelType.Patrol))
+        {
+            co2Consumption = vehicle.getAverageConsumption()*CO2_CONSUMPTION_PETROL;
+        }
+
+
         System.out.println(route.getTypeOfRoute().toString());
         if(route.getSlope() < 0)
         {
@@ -26,7 +38,6 @@ public class Calculator
         if(route.getTypeOfRoute().equals("Highway"))
         {
             factor = 1;
-
         }
         else if(route.getTypeOfRoute().equals("CountryRoad")){factor = 1.2;}
         else
@@ -36,7 +47,7 @@ public class Calculator
 
 
 
-        double co2 = route.getDistance() * vehicle.getAverageConsumption() * route.getSlope() * factor;
+        double co2 = route.getDistance() * co2Consumption * route.getSlope() * factor;
         return co2;
     }
 
