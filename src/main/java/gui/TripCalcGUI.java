@@ -53,7 +53,6 @@ public class TripCalcGUI extends JFrame{
 
     private Calculator calc = new Calculator();
     private LinkedList<Route> routeList = new LinkedList<Route>();
-    private Route route;
     private Vehicle v;
     private double co2 = 0;
 
@@ -143,7 +142,7 @@ public class TripCalcGUI extends JFrame{
 
                 for(Route r : routeList)
                 {
-                    co2+= calc.calculateCo2Consumption(route, v);
+                    co2+= calc.calculateCo2Consumption(r, v);
                 }
 
                 txOutputCar.setText(co2+"");
@@ -175,10 +174,10 @@ public class TripCalcGUI extends JFrame{
                 {
                     strArray = str.split(";");
 
-                    route = new Route(Double.parseDouble(strArray[0].replace(",",".")), RouteType.valueOf(strArray[2]),
+                    Route r = new Route(Double.parseDouble(strArray[0].replace(",",".")), RouteType.valueOf(strArray[2]),
                             Double.parseDouble(strArray[3].replace(",",".")), Double.parseDouble(strArray[1].replace(",",".")));
 
-                    routeList.add(route);
+                    routeList.add(r);
 
                 }
 
@@ -188,6 +187,7 @@ public class TripCalcGUI extends JFrame{
 
             }
             br.close();
+
 
         } catch (Exception ex)
         {
@@ -208,6 +208,5 @@ public class TripCalcGUI extends JFrame{
     {
         new TripCalcGUI().setVisible(true);
     }
-
 
 }

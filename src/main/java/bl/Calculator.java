@@ -18,6 +18,7 @@ public class Calculator
     public double calculateCo2Consumption(Route route, Vehicle vehicle)
     {
         double factor;
+        System.out.println(route.getTypeOfRoute().toString());
         if(route.getSlope() < 0)
         {
             return 0;
