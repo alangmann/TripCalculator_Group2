@@ -1,5 +1,6 @@
 package bl;
 
+import javax.swing.*;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -16,14 +17,25 @@ public class Calculator
     private LinkedList<Route> routeList = new LinkedList<Route>();
 
 
-    public void calculateCo2Consumption(Route route, Vehicle vehicle)
+    public double calculateCo2Consumption(Route route, Vehicle vehicle)
     {
-        double factor = 0;
-        if(route.getTypeOfRoute().equals("Highway")){factor = 1;}
+        double factor = 101;
+        System.out.println(route.getTypeOfRoute());
+        if(route.getTypeOfRoute().equals("Highway"))
+        {
+            factor = 1;
+            System.out.println("hi from Highway");
+
+        }
         else if(route.getTypeOfRoute().equals("CountryRoad")){factor = 1.2;}
-        else if(route.getTypeOfRoute().equals("GravelRoad")){factor = 2;}
+        else if(route.getTypeOfRoute().equals("GravelRoad"))
+        {
+            factor = 2;
+            System.out.println("hi from GravelRoad");
+        }
 
         double co2 = route.getDistance() * vehicle.getAverageConsumption() * route.getSlope() * factor;
+        return co2;
     }
 
     public void calculateTotalCostOfRoute(Route route, Vehicle vehicle, String dayOfWeek)
@@ -35,6 +47,7 @@ public class Calculator
     {
         BufferedReader br;
         int i = 0;
+        System.out.println("kamehameha");
         try {
 
             String pathName = System.getProperty("user.dir")+ File.separator+ "src" + File.separator + "main"+
@@ -50,7 +63,9 @@ public class Calculator
             {
                 if(i!= 0)
                 {
+                    //an Stelle 3 und 1 replace , durch .
                     strArray = str.split(";");
+
 
                     Route route = new Route(Double.parseDouble(strArray[0]), RouteType.valueOf(strArray[2]),
                             Double.parseDouble(strArray[3]), Double.parseDouble(strArray[1]));
@@ -64,9 +79,13 @@ public class Calculator
 
 
             }
+            System.out.println("LIST:"+routeList.toString());
             br.close();
 
-        } catch (Exception ex) {}
+        } catch (Exception ex)
+        {
+            JOptionPane.showMessageDialog(null, ex.toString());
+        }
 
 
     }
