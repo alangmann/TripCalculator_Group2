@@ -1,13 +1,16 @@
 package gui;
 
-import bl.Calculator;
-import bl.FuelType;
+import bl.*;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.util.LinkedList;
 
 /**
  * Created by Corinna on 27.11.2014.
@@ -49,6 +52,10 @@ public class TripCalcGUI extends JFrame{
     private JLabel lbCargoCar = new JLabel("Cargo in kg: ");
 
     private Calculator calc = new Calculator();
+    private LinkedList<Route> routeList = new LinkedList<Route>();
+    private Route route;
+    private Vehicle v;
+
 
     public TripCalcGUI() throws HeadlessException
     {
@@ -119,29 +126,83 @@ public class TripCalcGUI extends JFrame{
         paRight.add(txOutputT);
 
         con.add(paRight);
+        readCSV();
 
         btSubmitCar.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e)
+            {
+                datenAutoEinlesen();
 
-                calc.init();
+                calc.calculateCo2Consumption(route, v);
+
             }
         });
 
     }
 
+
+    public void readCSV()
+    {
+        BufferedReader br;
+        int i = 0;
+        try {
+
+            String pathName = System.getProperty("user.dir")+ File.separator+ "src" + File.separator + "main"+
+                    File.separator + "resources" + File.separator+"routes.csv";
+
+            br = new BufferedReader(new FileReader(pathName));
+
+
+            String str = "";
+            String[] strArray;
+
+            while ((str = br.readLine()) != null)
+            {
+                if(i!= 0)
+                {
+                    strArray = str.split(";");
+
+                    route = new Route(Double.parseDouble(strArray[0].replace(",",".")), RouteType.valueOf(strArray[2]),
+                            Double.parseDouble(strArray[3].replace(",",".")), Double.parseDouble(strArray[1].replace(",",".")));
+
+                    routeList.add(route);
+
+                }
+
+
+                System.out.println(routeList.toString());
+                i++;
+
+
+            }
+            System.out.println("LIST:"+routeList.toString());
+            br.close();
+
+        } catch (Exception ex)
+        {
+            JOptionPane.showMessageDialog(null, ex.toString());
+        }
+
+
+    }
     public void datenAutoEinlesen()
     {
-        String fuelConsumption = txFuelConsumptionCar.getText();
-        String cargo = txCargoCar.getText();
+        double fuelConsumption = Double.parseDouble(txFuelConsumptionCar.getText().replace(",", "."));
+        int cargo = Integer.parseInt(txCargoCar.getText());
 
         for(FuelType f : FuelType.values())
         {
             cbTypeOfFuelCar.addItem(f.toString());
         }
 
-        String typeOfFuel = cbTypeOfFuelCar.getSelectedItem().toString();
+        FuelType typeOfFuel = FuelType.valueOf(cbTypeOfFuelCar.getSelectedItem().toString());
+        v = new Vehicle(typeOfFuel, cargo, fuelConsumption);
+
+
+
     }
+
 
     public static void main(String[] args)
     {
@@ -149,7 +210,6 @@ public class TripCalcGUI extends JFrame{
 
     }
 
-    //ksdfdsfsdf
 
 
 }

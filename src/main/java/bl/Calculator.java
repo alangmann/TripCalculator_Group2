@@ -14,7 +14,6 @@ public class Calculator
     private static double CO2_CONSUMPTION_DIESEL;
     private static double CO2_CONSUMPTION_PETROL;
 
-    private LinkedList<Route> routeList = new LinkedList<Route>();
 
 
     public double calculateCo2Consumption(Route route, Vehicle vehicle)
@@ -43,49 +42,5 @@ public class Calculator
 
     }
 
-    public void init()
-    {
-        BufferedReader br;
-        int i = 0;
-        System.out.println("kamehameha");
-        try {
 
-            String pathName = System.getProperty("user.dir")+ File.separator+ "src" + File.separator + "main"+
-                    File.separator + "resources" + File.separator+"routes.csv";
-
-            br = new BufferedReader(new FileReader(pathName));
-
-
-            String str = "";
-            String[] strArray;
-
-            while ((str = br.readLine()) != null)
-            {
-                if(i!= 0)
-                {
-                    strArray = str.split(";");
-
-                    Route route = new Route(Double.parseDouble(strArray[0].replace(",",".")), RouteType.valueOf(strArray[2]),
-                            Double.parseDouble(strArray[3].replace(",",".")), Double.parseDouble(strArray[1].replace(",",".")));
-
-                    routeList.add(route);
-
-                }
-
-
-                System.out.println(routeList.toString());
-                i++;
-
-
-            }
-            System.out.println("LIST:"+routeList.toString());
-            br.close();
-
-        } catch (Exception ex)
-        {
-            JOptionPane.showMessageDialog(null, ex.toString());
-        }
-
-
-    }
 }
