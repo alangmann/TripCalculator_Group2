@@ -86,6 +86,11 @@ public class TripCalcGUI extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 if(rbCar.isSelected())
                 {
+                    Component[] com = paLeft.getComponents();
+
+                    for (int a = 0; a < com.length; a++) {
+                        com[a].setEnabled(false);
+                    }
                 }
             }
         });
