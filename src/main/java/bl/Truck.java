@@ -3,12 +3,13 @@ package bl;
 /**
  * Created by Yvonne on 27.11.2014.
  */
-public class Truck
+public class Truck extends Vehicle
 {
     private int axies; 
     private boolean adBlue;
 
-    public Truck(boolean adBlue, int axies) {
+    public Truck(FuelType typeOfFuel, int cargo, double averageConsumption, boolean adBlue, int axies) {
+        super(typeOfFuel, cargo, averageConsumption);
         this.adBlue = adBlue;
         this.axies = axies;
     }
