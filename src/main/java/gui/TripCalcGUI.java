@@ -267,7 +267,7 @@ public class TripCalcGUI extends JFrame{
         ) {
             @Override
             public void actionPerformed(ActionEvent e) {
-                datenAutoEinlesen();
+                datenTruckEinlesen();
                 co2= 0;
 
                 for(Route r : routeList)
