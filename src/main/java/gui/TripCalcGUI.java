@@ -66,6 +66,20 @@ public class TripCalcGUI extends JFrame{
         this.setSize(700, 250);
         this.setLocationRelativeTo(null);
         init();
+
+        Component[] comRight = paRight.getComponents();
+        Component[] comLeft = paLeft.getComponents();
+
+
+        for (int a = 0; a < comRight.length; a++) {
+            comRight[a].setEnabled(false);
+        }
+        for (int a = 0; a < comLeft.length; a++) {
+            comLeft[a].setEnabled(true);
+        }
+
+        rbCar.setEnabled(true);
+        rbTruck.setEnabled(true);
     }
 
     public void init()
@@ -139,6 +153,7 @@ public class TripCalcGUI extends JFrame{
         paRight.setLayout(new GridLayout(8,1));
         paRight.setBorder(new TitledBorder("Truck"));
         con.add(paLeft);
+        con.add(paRight);
         paLeft.setLayout(new GridLayout(6, 1));
         paLeft.setBorder(new TitledBorder("Car"));
         paLeft.add(rbCar);
@@ -147,6 +162,16 @@ public class TripCalcGUI extends JFrame{
         paLeft.add(paBottom);
         paLeft.add(btSubmitCar);
         paLeft.add(txOutputCar);
+
+        paRight.add(rbTruck);
+        paRight.add(pa1);
+        paRight.add(pa2);
+        paRight.add(pa3);
+        paRight.add(pa4);
+        paRight.add(pa5);
+        paRight.add(btSubmitT);
+        paRight.add(txOutputT);
+
         paTop.setLayout(new GridLayout(1,2));
         paMiddle.setLayout(new GridLayout(1,2));
         paBottom.setLayout(new GridLayout(1,2));
@@ -182,16 +207,8 @@ public class TripCalcGUI extends JFrame{
         pa5.add(lbAdBlue);
         pa5.add(chbAdBlueT);
 
-        paRight.add(rbTruck);
-        paRight.add(pa1);
-        paRight.add(pa2);
-        paRight.add(pa3);
-        paRight.add(pa4);
-        paRight.add(pa5);
-        paRight.add(btSubmitT);
-        paRight.add(txOutputT);
 
-        con.add(paRight);
+
         readCSV();
 
         for(FuelType f : FuelType.values())
