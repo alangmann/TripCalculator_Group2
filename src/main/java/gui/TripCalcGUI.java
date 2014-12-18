@@ -84,15 +84,17 @@ public class TripCalcGUI extends JFrame{
         rbCar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                Component[] com1 = paRight.getComponents();
+                Component[] com2 = paLeft.getComponents();
                 if(rbCar.isSelected())
                 {
                     rbTruck.setEnabled(true);
-                    Component[] com1 = paRight.getComponents();
+
 
                     for (int a = 0; a < com1.length; a++) {
                         com1[a].setEnabled(false);
                     }
-                    Component[] com2 = paLeft.getComponents();
+
 
                     for (int a = 0; a < com2.length; a++) {
                         com2[a].setEnabled(true);
@@ -100,13 +102,12 @@ public class TripCalcGUI extends JFrame{
                 }
                 else if(rbTruck.isSelected())
                 {
-                    Component[] com1 = paLeft.getComponents();
 
                     rbCar.setEnabled(true);
                     for (int a = 0; a < com1.length; a++) {
                         com1[a].setEnabled(false);
                     }
-                    Component[] com2 = paLeft.getComponents();
+
 
                     for (int a = 0; a < com2.length; a++) {
                         com2[a].setEnabled(true);
