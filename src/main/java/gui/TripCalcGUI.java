@@ -15,6 +15,8 @@ import java.util.LinkedList;
 /**
  * Created by Corinna on 27.11.2014.
  */
+
+//hey yooooo
 public class TripCalcGUI extends JFrame{
 
 
