@@ -56,7 +56,8 @@ public class TripCalcGUI extends JFrame{
 
     private Calculator calc = new Calculator();
     private LinkedList<Route> routeList = new LinkedList<Route>();
-    private Vehicle v;
+    private Car c;
+    private Truck t;
     private double co2 = 0;
 
 
@@ -255,7 +256,7 @@ public class TripCalcGUI extends JFrame{
 
                 for(Route r : routeList)
                 {
-                    co2+= calc.calculateCo2Consumption(r, v);
+                    co2+= calc.calculateCo2Consumption(r, c);
                 }
 
                 txOutputCar.setText(co2+"");
@@ -272,7 +273,7 @@ public class TripCalcGUI extends JFrame{
 
                 for(Route r : routeList)
                 {
-                    co2+= calc.calculateCo2Consumption(r, v);
+                    co2+= calc.calculateCo2Consumption(r, c);
                 }
 
                 txOutputCar.setText(co2+"");
@@ -330,7 +331,7 @@ public class TripCalcGUI extends JFrame{
         double fuelConsumption = Double.parseDouble(txFuelConsumptionCar.getText().replace(",", "."));
         int cargo = Integer.parseInt(txCargoCar.getText());
         FuelType typeOfFuel = FuelType.valueOf(cbTypeOfFuelCar.getSelectedItem().toString());
-        v = new Vehicle(typeOfFuel, cargo, fuelConsumption);
+        c = new Car(typeOfFuel, cargo, fuelConsumption);
     }
 
     public void datenTruckEinlesen()
@@ -350,7 +351,7 @@ public class TripCalcGUI extends JFrame{
             adBlue = false;
         }
 
-        v = new Vehicle(typeOfFuel, cargo, fuelConsumption);
+        //c = new Vehicle(typeOfFuel, cargo, fuelConsumption);
     }
 
     public static void main(String[] args)

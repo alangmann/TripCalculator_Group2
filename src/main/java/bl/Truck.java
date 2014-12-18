@@ -5,21 +5,21 @@ package bl;
  */
 public class Truck extends Vehicle
 {
-    private int axies; 
+    private int axles;
     private boolean adBlue;
 
-    public Truck(FuelType typeOfFuel, int cargo, double averageConsumption, boolean adBlue, int axies) {
+    public Truck(FuelType typeOfFuel, int cargo, double averageConsumption, boolean adBlue, int axles) {
         super(typeOfFuel, cargo, averageConsumption);
         this.adBlue = adBlue;
-        this.axies = axies;
+        this.axles = axles;
     }
 
-    public int getAxies() {
-        return axies;
+    public int getAxles() {
+        return axles;
     }
 
-    public void setAxies(int axies) {
-        this.axies = axies;
+    public void setAxles(int axies) {
+        this.axles = axles;
     }
 
     public boolean isAdBlue() {
@@ -38,14 +38,14 @@ public class Truck extends Vehicle
         Truck truck = (Truck) o;
 
         if (adBlue != truck.adBlue) return false;
-        if (axies != truck.axies) return false;
+        if (axles != truck.axles) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = axies;
+        int result = axles;
         result = 31 * result + (adBlue ? 1 : 0);
         return result;
     }
@@ -53,7 +53,7 @@ public class Truck extends Vehicle
     @Override
     public String toString() {
         return "Truck{" +
-                "axies=" + axies +
+                "axies=" + axles +
                 ", adBlue=" + adBlue +
                 '}';
     }
