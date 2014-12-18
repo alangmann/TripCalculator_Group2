@@ -129,8 +129,6 @@ public class TripCalcGUI extends JFrame{
                     Component[] comRight = paRight.getComponents();
                     Component[] comLeft = paLeft.getComponents();
 
-                    System.out.println("right: "+comRight.length);
-                    System.out.println("left: "+comLeft.length);
 
                     for (int a = 0; a < comRight.length; a++) {
                         comRight[a].setEnabled(true);
@@ -214,6 +212,7 @@ public class TripCalcGUI extends JFrame{
         for(FuelType f : FuelType.values())
         {
             cbTypeOfFuelCar.addItem(f.toString());
+            cbTypeFuelT.addItem(f.toString());
         }
 
 
