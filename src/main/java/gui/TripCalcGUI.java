@@ -87,6 +87,7 @@ public class TripCalcGUI extends JFrame{
                 }
             }
         });
+        //sdfsdfsdfs
 
         JPanel paRight = new JPanel();
         paRight.setLayout(new GridLayout(8,1));
