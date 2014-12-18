@@ -50,6 +50,10 @@ public class Calculator
 
             resultCo2 = route.getDistance() * co2Consumption * route.getSlope() * factor;
         }
+        else if(vehicle instanceof Truck)
+        {
+
+        }
 
         return resultCo2;
     }
