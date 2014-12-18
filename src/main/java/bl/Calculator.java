@@ -32,6 +32,7 @@ public class Calculator
                 co2Consumption = vehicle.getAverageConsumption()*CO2_CONSUMPTION_PETROL;
             }
 
+            double co2ConsumptionsNeu = 0.0005*vehicle.getCargo();
 
             System.out.println(route.getTypeOfRoute().toString());
             if(route.getSlope() < 0)
@@ -48,7 +49,11 @@ public class Calculator
                 factor = 2;
             }
 
-            resultCo2 = route.getDistance() * co2Consumption * route.getSlope() * factor;
+            resultCo2 = route.getDistance() * (co2Consumption + co2ConsumptionsNeu) * route.getSlope() * factor;
+            /**
+             * 0,05 l mehr pro 100kg
+             * 0,0005 l mehr pro 1kg
+             */
         }
         else if(vehicle instanceof Truck)
         {
