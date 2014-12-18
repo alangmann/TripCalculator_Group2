@@ -73,7 +73,15 @@ public class TripCalcGUI extends JFrame{
 
         for (int a = 0; a < comRight.length; a++) {
             comRight[a].setEnabled(false);
+
         }
+
+        cbTypeFuelT.setEnabled(false);
+        txAxlesT.setEnabled(false);
+        txCargoT.setEnabled(false);
+        txFuelConT.setEnabled(false);
+        chbAdBlueT.setEnabled(false);
+
         for (int a = 0; a < comLeft.length; a++) {
             comLeft[a].setEnabled(true);
         }
@@ -105,12 +113,22 @@ public class TripCalcGUI extends JFrame{
 
                     for (int a = 0; a < comRight.length; a++) {
                         comRight[a].setEnabled(false);
+
                     }
 
+                    cbTypeFuelT.setEnabled(false);
+                    txAxlesT.setEnabled(false);
+                    txCargoT.setEnabled(false);
+                    txFuelConT.setEnabled(false);
+                    chbAdBlueT.setEnabled(false);
 
                     for (int a = 0; a < comLeft.length; a++) {
                         comLeft[a].setEnabled(true);
                     }
+
+                    txFuelConsumptionCar.setEnabled(true);
+                    txCargoCar.setEnabled(true);
+                    cbTypeOfFuelCar.setEnabled(true);
 
                     rbCar.setEnabled(true);
                     rbTruck.setEnabled(true);
@@ -132,12 +150,24 @@ public class TripCalcGUI extends JFrame{
 
                     for (int a = 0; a < comRight.length; a++) {
                         comRight[a].setEnabled(true);
+
                     }
+                    cbTypeFuelT.setEnabled(true);
+                    txAxlesT.setEnabled(true);
+                    txCargoT.setEnabled(true);
+                    txFuelConT.setEnabled(true);
+                    chbAdBlueT.setEnabled(true);
 
 
                     for (int a = 0; a < comLeft.length; a++) {
                         comLeft[a].setEnabled(false);
+                        cbTypeOfFuelCar.setEnabled(false);
                     }
+
+                    txFuelConsumptionCar.setEnabled(false);
+                    txCargoCar.setEnabled(false);
+                    cbTypeOfFuelCar.setEnabled(false);
+
 
                     rbCar.setEnabled(true);
                     rbTruck.setEnabled(true);
@@ -184,7 +214,7 @@ public class TripCalcGUI extends JFrame{
         pa2.setLayout(new GridLayout(1,2));
         pa3.setLayout(new GridLayout(1,2));
         pa4.setLayout(new GridLayout(1,2));
-        pa5.setLayout(new GridLayout(1,2));
+        pa5.setLayout(new GridLayout(1, 2));
 
 
         lbFuelConT.setText("Average Fuel Consumption");
