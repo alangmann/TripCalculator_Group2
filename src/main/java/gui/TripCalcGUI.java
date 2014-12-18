@@ -15,8 +15,6 @@ import java.util.LinkedList;
 /**
  * Created by Corinna on 27.11.2014.
  */
-
-//hey yooooo
 public class TripCalcGUI extends JFrame{
 
 
@@ -83,49 +81,61 @@ public class TripCalcGUI extends JFrame{
 
         rbCar.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                Component[] com1 = paRight.getComponents();
-                Component[] com2 = paLeft.getComponents();
+            public void actionPerformed(ActionEvent e)
+            {
+                if(rbCar.isSelected())
+                {
+                    Component[] comRight = paRight.getComponents();
+                    Component[] comLeft = paLeft.getComponents();
 
 
-                    for (int a = 0; a < com1.length; a++) {
-                        com1[a].setEnabled(false);
+                    for (int a = 0; a < comRight.length; a++) {
+                        comRight[a].setEnabled(false);
                     }
 
 
-                    for (int a = 0; a < com2.length; a++) {
-                        com2[a].setEnabled(true);
+                    for (int a = 0; a < comLeft.length; a++) {
+                        comLeft[a].setEnabled(true);
                     }
 
-                rbCar.setEnabled(true);
-                rbTruck.setEnabled(true);
+                    rbCar.setEnabled(true);
+                    rbTruck.setEnabled(true);
+
+                }
 
             }
         });
 
         rbTruck.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                Component[] com1 = paRight.getComponents();
-                Component[] com2 = paLeft.getComponents();
+            public void actionPerformed(ActionEvent e)
+            {
+                if(rbTruck.isSelected())
+                {
+                    Component[] comRight = paRight.getComponents();
+                    Component[] comLeft = paLeft.getComponents();
 
+                    System.out.println("right: "+comRight.length);
+                    System.out.println("left: "+comLeft.length);
 
-                    for (int a = 0; a < com2.length; a++) {
-                        com2[a].setEnabled(false);
+                    for (int a = 0; a < comRight.length; a++) {
+                        comRight[a].setEnabled(true);
                     }
 
 
-                    for (int a = 0; a < com1.length; a++) {
-                        com1[a].setEnabled(true);
+                    for (int a = 0; a < comLeft.length; a++) {
+                        comLeft[a].setEnabled(false);
                     }
-                rbTruck.setEnabled(true);
-                rbCar.setEnabled(true);
+
+                    rbCar.setEnabled(true);
+                    rbTruck.setEnabled(true);
+
+                }
+
 
             }
         });
-        //sdfsdfsdfs
 
-        JPanel paRight = new JPanel();
         paRight.setLayout(new GridLayout(8,1));
         paRight.setBorder(new TitledBorder("Truck"));
         con.add(paLeft);
