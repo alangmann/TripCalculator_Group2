@@ -340,7 +340,7 @@ public class TripCalcGUI extends JFrame{
         double fuelConsumption = Double.parseDouble(txFuelConT.getText().replace(",", "."));
         int cargo = Integer.parseInt(txCargoT.getText());
         FuelType typeOfFuel = FuelType.valueOf(cbTypeFuelT.getSelectedItem().toString());
-        double axles = Double.parseDouble(txAxlesT.getText());
+        int axles = Integer.parseInt(txAxlesT.getText());
         boolean adBlue = false;
         if(chbAdBlueT.isSelected())
         {
@@ -351,7 +351,7 @@ public class TripCalcGUI extends JFrame{
             adBlue = false;
         }
 
-        //c = new Vehicle(typeOfFuel, cargo, fuelConsumption);
+        t = new Truck(typeOfFuel, cargo, fuelConsumption,  adBlue, axles);
     }
 
     public static void main(String[] args)
