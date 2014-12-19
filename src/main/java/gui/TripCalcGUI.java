@@ -1,17 +1,18 @@
-package gui;
 
-import bl.*;
+        package gui;
 
-import javax.swing.*;
-import javax.swing.border.TitledBorder;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.util.Calendar;
-import java.util.LinkedList;
+        import bl.*;
+
+        import javax.swing.*;
+        import javax.swing.border.TitledBorder;
+        import java.awt.*;
+        import java.awt.event.ActionEvent;
+        import java.awt.event.ActionListener;
+        import java.io.BufferedReader;
+        import java.io.File;
+        import java.io.FileReader;
+        import java.util.Calendar;
+        import java.util.LinkedList;
 
 /**
  * Created by Corinna on 27.11.2014.
@@ -477,7 +478,7 @@ public class TripCalcGUI extends JFrame{
 
         t = new Truck(typeOfFuel, cargo, fuelConsumption,  adBlue, axles);
     }
-//fdgdfgdfg
+
 
 
     public static void main(String[] args)
@@ -486,3 +487,4 @@ public class TripCalcGUI extends JFrame{
     }
 
 }
+
