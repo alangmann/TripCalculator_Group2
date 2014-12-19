@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.util.Calendar;
 import java.util.LinkedList;
 
 /**
@@ -74,6 +75,7 @@ public class TripCalcGUI extends JFrame{
     private Car c;
     private Truck t;
     private double co2 = 0;
+    private double cost = 0;
 
 
     public TripCalcGUI() throws HeadlessException
@@ -109,6 +111,27 @@ public class TripCalcGUI extends JFrame{
         txCostCar.setEditable(false);
         txOutputCar.setEditable(false);
         txOutputT.setEditable(false);
+    }
+
+    public String getCurrentWeekDay()
+    {
+        Calendar cal = Calendar.getInstance();
+        int weekDay = cal.get(Calendar.DAY_OF_WEEK);
+        String curDay ="";
+
+        switch(weekDay)
+        {
+            case 0: curDay="Monday";break;
+            case 1:curDay="Tuesday";break;
+            case 2:curDay="Wednesday";break;
+            case 3:curDay="Thursday";break;
+            case 4:curDay="Friday";break;
+            case 5:curDay="Saturday";break;
+            case 6:curDay="Sunday";break;
+            default: curDay="Error";
+        }
+
+        return curDay;
     }
 
     public void init()
@@ -301,10 +324,14 @@ public class TripCalcGUI extends JFrame{
             {
                 datenAutoEinlesen();
                 co2= 0;
+                cost = 0;
+                String curDay = getCurrentWeekDay();
 
                 for(Route r : routeList)
                 {
                     co2+= calc.calculateCo2Consumption(r, c);
+                    //Route route, Vehicle vehicle, String dayOfWeek, LinkedList<FuelPrices> fuelprices
+                    cost+=calc.calculateTotalCostOfRoute(r, c, curDay, fuelPricesList);
                 }
 
                 txOutputCar.setText(co2+"");
@@ -318,10 +345,13 @@ public class TripCalcGUI extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 datenTruckEinlesen();
                 co2= 0;
+                cost = 0;
+                String curDay = getCurrentWeekDay();
 
                 for(Route r : routeList)
                 {
-                    co2+= calc.calculateCo2Consumption(r, c);
+                    co2+= calc.calculateCo2Consumption(r, t);
+                    cost+=calc.calculateTotalCostOfRoute(r, t, curDay, fuelPricesList);
                 }
 
                 txOutputCar.setText(co2+"");
@@ -445,6 +475,8 @@ public class TripCalcGUI extends JFrame{
 
         t = new Truck(typeOfFuel, cargo, fuelConsumption,  adBlue, axles);
     }
+
+
 
     public static void main(String[] args)
     {

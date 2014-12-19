@@ -10,6 +10,7 @@ import java.util.LinkedList;
 /**
  * Created by Corinna on 27.11.2014.
  */
+
 public class Calculator
 {
     private static double CO2_CONSUMPTION_DIESEL = 0.0265;
@@ -99,12 +100,44 @@ public class Calculator
         return resultCo2;
     }
 
-    public void calculateTotalCostOfRoute(Route route, Vehicle vehicle, String dayOfWeek)
+    //parameter "fuelprices" hinzugefügt, weicht deshalb vom Klassendiagramm ab
+    public double calculateTotalCostOfRoute(Route route, Vehicle vehicle, String dayOfWeek, LinkedList<FuelPrices> fuelprices)
     {
+        double cost = 0;
 
+        for(FuelPrices f : fuelprices)
+        {
+            if(f.getWeekDay().equals(dayOfWeek))
+            {
+                double distance = route.getDistance();
+                double averageConsumptionOneKm = vehicle.getAverageConsumption()/100;
 
+                if(vehicle.getTypeOfFuel().equals("Diesel"))
+                {
+                    cost+=averageConsumptionOneKm*distance*f.getDieselPrice();
+                }
+                else if(vehicle.getTypeOfFuel().equals("Patrol"))
+                {
+                    cost+=averageConsumptionOneKm*distance*f.getPatrolPrice();
+                }
 
+                if(route.getSpecialFee() != 0)
+                {
+                    if(vehicle instanceof Truck)
+                    {
+                        cost+=(route.getSpecialFee()*((Truck) vehicle).getAxles()*1.5);
+                    }
+                    else if(vehicle instanceof Car)
+                    {
+                        cost+=route.getSpecialFee();
+                    }
+                }
+            }
+        }
+
+return cost;
     }
+
 
 
 }
