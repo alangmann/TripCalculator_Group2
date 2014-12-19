@@ -356,7 +356,7 @@ public class TripCalcGUI extends JFrame{
                     txCostTruck.setText(String.format("%f.2",cost)+"€");
                 }
 
-                txOutputCar.setText(co2+"");
+                txOutputT.setText(co2+"");
             }
         });
 
