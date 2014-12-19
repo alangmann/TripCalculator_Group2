@@ -453,10 +453,26 @@ public class TripCalcGUI extends JFrame{
 
     public void datenAutoEinlesen()
     {
-        double fuelConsumption = Double.parseDouble(txFuelConsumptionCar.getText().replace(",", "."));
-        int cargo = Integer.parseInt(txCargoCar.getText());
-        FuelType typeOfFuel = FuelType.valueOf(cbTypeOfFuelCar.getSelectedItem().toString());
-        c = new Car(typeOfFuel, cargo, fuelConsumption);
+        try
+        {
+            if(txFuelConsumptionCar.getText() ==null || txFuelConsumptionCar.getText().equals("") || txCargoCar.getText() == null || txCargoCar.getText().equals(""))
+            {
+                throw new Exception("Bitte geben Sie einen numerischen Wert in die Textfelder ein");
+            }
+            else
+            {
+                double fuelConsumption = Double.parseDouble(txFuelConsumptionCar.getText().replace(",", "."));
+                int cargo = Integer.parseInt(txCargoCar.getText());
+                FuelType typeOfFuel = FuelType.valueOf(cbTypeOfFuelCar.getSelectedItem().toString());
+                c = new Car(typeOfFuel, cargo, fuelConsumption);
+            }
+        }
+        catch(Exception ex)
+        {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
+
+
     }
 
     public void datenTruckEinlesen()
