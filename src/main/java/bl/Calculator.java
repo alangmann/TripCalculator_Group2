@@ -57,7 +57,42 @@ public class Calculator
         }
         else if(vehicle instanceof Truck)
         {
+            if(vehicle.getTypeOfFuel().equals(FuelType.Diesel))
+            {
+                co2Consumption = vehicle.getAverageConsumption()*CO2_CONSUMPTION_DIESEL;
+            }
+            else if(vehicle.getTypeOfFuel().equals(FuelType.Patrol))
+            {
+                co2Consumption = vehicle.getAverageConsumption()*CO2_CONSUMPTION_PETROL;
+            }
 
+            double co2ConsumptionsNeu = 0.0005*vehicle.getCargo();
+
+
+
+            System.out.println(route.getTypeOfRoute().toString());
+            if(route.getSlope() < 0)
+            {
+                return 0;
+            }
+            if(route.getTypeOfRoute().equals("Highway"))
+            {
+                factor = 1;
+            }
+            else if(route.getTypeOfRoute().equals("CountryRoad")){factor = 1.2;}
+            else
+            {
+                factor = 2;
+            }
+
+            if(((Truck) vehicle).isAdBlue())
+            {
+                resultCo2 = route.getDistance() * ((co2Consumption + co2ConsumptionsNeu)/100*93) * route.getSlope() * factor;
+            }
+            else
+            {
+                resultCo2 = route.getDistance() * (co2Consumption + co2ConsumptionsNeu) * route.getSlope() * factor;
+            }
         }
 
         return resultCo2;
