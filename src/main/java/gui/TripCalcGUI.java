@@ -54,6 +54,19 @@ public class TripCalcGUI extends JFrame{
     private JRadioButton rbCar = new JRadioButton();
     private JRadioButton rbTruck = new JRadioButton();
 
+    private JPanel paLabelsTruck = new JPanel();
+    private JPanel paLabelsCar = new JPanel();
+
+    private JPanel paUnterteilungTruck = new JPanel();
+    private JPanel paUnterteilungCar = new JPanel();
+
+    private JTextField txCostTruck = new JTextField();
+    private JTextField txCostCar = new JTextField();
+    private JLabel lbCostTruck = new JLabel();
+    private JLabel lbCostCar = new JLabel();
+    private JLabel lbOutputCar = new JLabel();
+    private JLabel lbOutputTruck = new JLabel();
+
     private Calculator calc = new Calculator();
     private LinkedList<Route> routeList = new LinkedList<Route>();
     private LinkedList<FuelPrices> fuelPricesList = new LinkedList<FuelPrices>();
@@ -91,6 +104,11 @@ public class TripCalcGUI extends JFrame{
 
         rbCar.setEnabled(true);
         rbTruck.setEnabled(true);
+
+        txCostTruck.setEditable(false);
+        txCostCar.setEditable(false);
+        txOutputCar.setEditable(false);
+        txOutputT.setEditable(false);
     }
 
     public void init()
@@ -181,18 +199,44 @@ public class TripCalcGUI extends JFrame{
             }
         });
 
-        paRight.setLayout(new GridLayout(8,1));
+        paLabelsCar.setLayout(new GridLayout(1, 2));
+        paLabelsTruck.setLayout(new GridLayout(1, 2));
+        paUnterteilungTruck.setLayout(new GridLayout(1, 2));
+        paUnterteilungCar.setLayout(new GridLayout(1, 2));
+
+        paUnterteilungTruck.add(txOutputT);
+        paUnterteilungTruck.add(txCostTruck);
+        paUnterteilungCar.add(txOutputCar);
+        paUnterteilungCar.add(txCostCar);
+
+        lbCostTruck.setText("Costs:");
+        lbCostCar.setText("Costs:");
+        lbOutputCar.setText("CO2  consumption:");
+        lbOutputTruck.setText("CO2 consumption:");
+
+        lbCostTruck.setHorizontalAlignment(SwingConstants.CENTER);
+        lbCostCar.setHorizontalAlignment(SwingConstants.CENTER);
+        lbOutputCar.setHorizontalAlignment(SwingConstants.CENTER);
+        lbOutputTruck.setHorizontalAlignment(SwingConstants.CENTER);
+
+        paLabelsTruck.add(lbOutputTruck);
+        paLabelsTruck.add(lbCostTruck);
+        paLabelsCar.add(lbOutputCar);
+        paLabelsCar.add(lbCostCar);
+
+        paRight.setLayout(new GridLayout(9,1));
         paRight.setBorder(new TitledBorder("Truck"));
         con.add(paLeft);
         con.add(paRight);
-        paLeft.setLayout(new GridLayout(6, 1));
+        paLeft.setLayout(new GridLayout(7, 1));
         paLeft.setBorder(new TitledBorder("Car"));
         paLeft.add(rbCar);
         paLeft.add(paTop);
         paLeft.add(paMiddle);
         paLeft.add(paBottom);
         paLeft.add(btSubmitCar);
-        paLeft.add(txOutputCar);
+        paLeft.add(paLabelsCar);
+        paLeft.add(paUnterteilungCar);
 
         paRight.add(rbTruck);
         paRight.add(pa1);
@@ -201,7 +245,8 @@ public class TripCalcGUI extends JFrame{
         paRight.add(pa4);
         paRight.add(pa5);
         paRight.add(btSubmitT);
-        paRight.add(txOutputT);
+        paRight.add(paLabelsTruck);
+        paRight.add(paUnterteilungTruck);
 
         paTop.setLayout(new GridLayout(1,2));
         paMiddle.setLayout(new GridLayout(1,2));
@@ -297,6 +342,7 @@ public class TripCalcGUI extends JFrame{
 
             br = new BufferedReader(new FileReader(pathName));
 
+
             String str = "";
             String[] strArray;
 
@@ -310,15 +356,23 @@ public class TripCalcGUI extends JFrame{
                             Double.parseDouble(strArray[3].replace(",",".")), Double.parseDouble(strArray[1].replace(",",".")));
 
                     routeList.add(r);
+
                 }
+
+
                 i++;
+
+
             }
             br.close();
-        }
-        catch (Exception ex)
+
+
+        } catch (Exception ex)
         {
             JOptionPane.showMessageDialog(null, ex.toString());
         }
+
+
     }
 
     public void readCSVSprit()
@@ -374,6 +428,7 @@ public class TripCalcGUI extends JFrame{
 
     public void datenTruckEinlesen()
     {
+
         double fuelConsumption = Double.parseDouble(txFuelConT.getText().replace(",", "."));
         int cargo = Integer.parseInt(txCargoT.getText());
         FuelType typeOfFuel = FuelType.valueOf(cbTypeFuelT.getSelectedItem().toString());
