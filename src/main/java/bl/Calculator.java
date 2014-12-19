@@ -35,8 +35,6 @@ public class Calculator
             }
 
             double co2ConsumptionsNeu = 0.0005*vehicle.getCargo();
-
-            System.out.println(route.getTypeOfRoute().toString());
             if(route.getSlope() < 0)
             {
                 return 0;
