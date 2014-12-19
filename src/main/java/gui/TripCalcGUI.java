@@ -297,7 +297,6 @@ public class TripCalcGUI extends JFrame{
 
             br = new BufferedReader(new FileReader(pathName));
 
-
             String str = "";
             String[] strArray;
 
@@ -311,23 +310,15 @@ public class TripCalcGUI extends JFrame{
                             Double.parseDouble(strArray[3].replace(",",".")), Double.parseDouble(strArray[1].replace(",",".")));
 
                     routeList.add(r);
-
                 }
-
-
                 i++;
-
-
             }
             br.close();
-
-
-        } catch (Exception ex)
+        }
+        catch (Exception ex)
         {
             JOptionPane.showMessageDialog(null, ex.toString());
         }
-
-
     }
 
     public void readCSVSprit()
@@ -383,7 +374,6 @@ public class TripCalcGUI extends JFrame{
 
     public void datenTruckEinlesen()
     {
-
         double fuelConsumption = Double.parseDouble(txFuelConT.getText().replace(",", "."));
         int cargo = Integer.parseInt(txCargoT.getText());
         FuelType typeOfFuel = FuelType.valueOf(cbTypeFuelT.getSelectedItem().toString());
