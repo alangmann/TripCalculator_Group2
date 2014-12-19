@@ -477,7 +477,7 @@ public class TripCalcGUI extends JFrame{
 
         t = new Truck(typeOfFuel, cargo, fuelConsumption,  adBlue, axles);
     }
-
+//fdgdfgdfg
 
 
     public static void main(String[] args)
