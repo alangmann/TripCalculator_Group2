@@ -332,10 +332,10 @@ public class TripCalcGUI extends JFrame{
                     co2+= calc.calculateCo2Consumption(r, c);
                     //Route route, Vehicle vehicle, String dayOfWeek, LinkedList<FuelPrices> fuelprices
                     cost+=calc.calculateTotalCostOfRoute(r, c, curDay, fuelPricesList);
-
+                    txCostCar.setText(cost+"€");
                 }
-                txCostCar.setText(String.format("%.2f Euro", cost));
-                txOutputCar.setText(String.format("%.2f", co2));
+
+                txOutputCar.setText(co2+"");
 
             }
         });
@@ -353,10 +353,10 @@ public class TripCalcGUI extends JFrame{
                 {
                     co2+= calc.calculateCo2Consumption(r, t);
                     cost+=calc.calculateTotalCostOfRoute(r, t, curDay, fuelPricesList);
-                    txCostTruck.setText(""+cost);
+                    txCostTruck.setText(String.format("%f.2",cost)+"€");
                 }
-                txCostTruck.setText(String.format("%.2f Euro", cost));
-                txOutputT.setText(String.format("%.2f", co2));
+
+                txOutputT.setText(co2+"");
             }
         });
 
@@ -374,6 +374,7 @@ public class TripCalcGUI extends JFrame{
 
             br = new BufferedReader(new FileReader(pathName));
 
+
             String str = "";
             String[] strArray;
 
@@ -389,7 +390,11 @@ public class TripCalcGUI extends JFrame{
                     routeList.add(r);
 
                 }
+
+
                 i++;
+
+
             }
             br.close();
 
@@ -426,8 +431,13 @@ public class TripCalcGUI extends JFrame{
                     FuelPrices fuelP = new FuelPrices(strArray[0], Double.parseDouble(strArray[1].replace(",",".")), Double.parseDouble(strArray[2].replace(",",".")));
 
                     fuelPricesList.add(fuelP);
+
                 }
+
+
                 i++;
+
+
             }
             br.close();
 
@@ -436,6 +446,8 @@ public class TripCalcGUI extends JFrame{
         {
             JOptionPane.showMessageDialog(null, ex.toString());
         }
+
+
     }
 
     public void datenAutoEinlesen()
@@ -448,6 +460,7 @@ public class TripCalcGUI extends JFrame{
 
     public void datenTruckEinlesen()
     {
+
         double fuelConsumption = Double.parseDouble(txFuelConT.getText().replace(",", "."));
         int cargo = Integer.parseInt(txCargoT.getText());
         FuelType typeOfFuel = FuelType.valueOf(cbTypeFuelT.getSelectedItem().toString());
@@ -464,6 +477,9 @@ public class TripCalcGUI extends JFrame{
 
         t = new Truck(typeOfFuel, cargo, fuelConsumption,  adBlue, axles);
     }
+
+
+
     public static void main(String[] args)
     {
         new TripCalcGUI().setVisible(true);
