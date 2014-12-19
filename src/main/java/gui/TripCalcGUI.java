@@ -56,6 +56,8 @@ public class TripCalcGUI extends JFrame{
 
     private Calculator calc = new Calculator();
     private LinkedList<Route> routeList = new LinkedList<Route>();
+    private LinkedList<FuelPrices> fuelPricesList = new LinkedList<FuelPrices>();
+
     private Car c;
     private Truck t;
     private double co2 = 0;
@@ -238,7 +240,8 @@ public class TripCalcGUI extends JFrame{
 
 
 
-        readCSV();
+        readCSVRoutes();
+        readCSVSprit();
 
         for(FuelType f : FuelType.values())
         {
@@ -283,7 +286,7 @@ public class TripCalcGUI extends JFrame{
     }
 
 
-    public void readCSV()
+    public void readCSVRoutes()
     {
         BufferedReader br;
         int i = 0;
@@ -326,6 +329,50 @@ public class TripCalcGUI extends JFrame{
 
 
     }
+
+    public void readCSVSprit()
+    {
+        BufferedReader br;
+        int i = 0;
+        try {
+
+            String pathName = System.getProperty("user.dir")+ File.separator+ "src" + File.separator + "main"+
+                    File.separator + "resources" + File.separator+"sprit_db.csv";
+
+            br = new BufferedReader(new FileReader(pathName));
+
+
+            String str = "";
+            String[] strArray;
+
+            while ((str = br.readLine()) != null)
+            {
+                if(i!= 0)
+                {
+                    strArray = str.split(";");
+
+                    FuelPrices fuelP = new FuelPrices(strArray[0], Double.parseDouble(strArray[1].replace(",",".")), Double.parseDouble(strArray[2].replace(",",".")));
+
+                    fuelPricesList.add(fuelP);
+
+                }
+
+
+                i++;
+
+
+            }
+            br.close();
+
+
+        } catch (Exception ex)
+        {
+            JOptionPane.showMessageDialog(null, ex.toString());
+        }
+
+
+    }
+
     public void datenAutoEinlesen()
     {
         double fuelConsumption = Double.parseDouble(txFuelConsumptionCar.getText().replace(",", "."));
