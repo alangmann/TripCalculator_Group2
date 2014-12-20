@@ -15,7 +15,7 @@ import java.util.Calendar;
 import java.util.LinkedList;
 
 public class TripCalcGUI extends JFrame{
-
+//kjhkjhkjh
 
 
     private JPanel paLeft = new JPanel();
@@ -444,8 +444,8 @@ public class TripCalcGUI extends JFrame{
         {
             JOptionPane.showMessageDialog(null, ex.toString());
         }
-
-
+//dfgdfgdfg
+//sdsdf
     }
 
     public void datenAutoEinlesen()
@@ -456,41 +456,51 @@ public class TripCalcGUI extends JFrame{
             {
                 throw new Exception("Bitte geben Sie einen numerischen Wert in die Textfelder ein");
             }
-            else
-            {
-                double fuelConsumption = Double.parseDouble(txFuelConsumptionCar.getText().replace(",", "."));
-                int cargo = Integer.parseInt(txCargoCar.getText());
-                FuelType typeOfFuel = FuelType.valueOf(cbTypeOfFuelCar.getSelectedItem().toString());
-                c = new Car(typeOfFuel, cargo, fuelConsumption);
-            }
+
+            double fuelConsumption = Double.parseDouble(txFuelConsumptionCar.getText().replace(",", "."));
+            int cargo = Integer.parseInt(txCargoCar.getText());
+            FuelType typeOfFuel = FuelType.valueOf(cbTypeOfFuelCar.getSelectedItem().toString());
+            c = new Car(typeOfFuel, cargo, fuelConsumption);
+
         }
         catch(Exception ex)
         {
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }
-
-
     }
 
     public void datenTruckEinlesen()
     {
+        try {
 
-        double fuelConsumption = Double.parseDouble(txFuelConT.getText().replace(",", "."));
-        int cargo = Integer.parseInt(txCargoT.getText());
-        FuelType typeOfFuel = FuelType.valueOf(cbTypeFuelT.getSelectedItem().toString());
-        int axles = Integer.parseInt(txAxlesT.getText());
-        boolean adBlue = false;
-        if(chbAdBlueT.isSelected())
-        {
-            adBlue = true;
-        }
-        else
-        {
-            adBlue = false;
-        }
+            if(txFuelConT.getText() ==null || txFuelConT.getText().equals("") || txCargoT.getText() == null ||
+                    txCargoT.getText().equals("") || txAxlesT.getText()==null || txAxlesT.getText().equals(""))
+            {
+                throw new Exception("Bitte geben Sie einen numerischen Wert in die Textfelder ein");
+            }
 
-        t = new Truck(typeOfFuel, cargo, fuelConsumption,  adBlue, axles);
+            double fuelConsumption = Double.parseDouble(txFuelConT.getText().replace(",", "."));
+            int cargo = Integer.parseInt(txCargoT.getText());
+            FuelType typeOfFuel = FuelType.valueOf(cbTypeFuelT.getSelectedItem().toString());
+            int axles = Integer.parseInt(txAxlesT.getText());
+            boolean adBlue = false;
+            if (chbAdBlueT.isSelected()) {
+                adBlue = true;
+            } else {
+                adBlue = false;
+            }
+
+            t = new Truck(typeOfFuel, cargo, fuelConsumption, adBlue, axles);
+        }
+        catch(Exception ex)
+        {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
     }
+
+
+
+
 
 
 
