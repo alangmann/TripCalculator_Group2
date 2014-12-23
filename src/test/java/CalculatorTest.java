@@ -353,7 +353,7 @@ public class CalculatorTest
     public void testIfReadCSVRSpritDBReturnsNoError()
     {
         String f = new File(System.getProperty("user.dir")).getParent();
-        String path = f+ "/main/resources/routes.csv";
+        String path = f+ "/main/resources/sprit_db.csv";
 
         Assert.assertNotNull(calc.readCSVSprit(path));
     }
