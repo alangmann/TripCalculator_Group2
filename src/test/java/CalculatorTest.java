@@ -9,7 +9,7 @@ import java.io.File;
 import java.util.LinkedList;
 
 import static org.junit.Assert.assertThat;
-        import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertTrue;
 
 
 public class CalculatorTest
@@ -354,6 +354,6 @@ public class CalculatorTest
         String f = new File(System.getProperty("user.dir")).getParent();
         String path = f+ "\\main\\resources\\sprit_db.csv";
 
-        Assert.assertNotNull(calc.readCSVRoutes(path));
+        Assert.assertNotNull(calc.readCSVSprit(path));
     }
 }

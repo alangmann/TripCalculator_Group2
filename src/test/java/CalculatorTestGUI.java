@@ -6,9 +6,12 @@ import org.junit.Test;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Calendar;
 
 import static org.hamcrest.CoreMatchers.equalTo;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 
 public class CalculatorTestGUI
@@ -18,6 +21,12 @@ public class CalculatorTestGUI
     @Before
     public void setUp() {
         gui = new TripCalcGUI();
+    }
+
+    @Test
+    public void setAdBlueToFalse() {
+
+        assertTrue(gui.datenAutoEinlesen());
     }
 
 

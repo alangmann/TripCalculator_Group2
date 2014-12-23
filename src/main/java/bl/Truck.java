@@ -18,7 +18,7 @@ public class Truck extends Vehicle
         return axles;
     }
 
-    public void setAxles(int axies) {
+    public void setAxles(int axles) {
         this.axles = axles;
     }
 
