@@ -94,7 +94,7 @@ public class Calculator
         }
 
         return resultCo2;
-    }//fgfgfgfg
+    }
 
     //parameter "fuelprices" hinzugefügt, weicht deshalb vom Klassendiagramm ab
     public double calculateTotalCostOfRoute(Route route, Vehicle vehicle, String dayOfWeek, LinkedList<FuelPrices> fuelprices)
@@ -108,12 +108,13 @@ public class Calculator
                 double distance = route.getDistance();
                 double averageConsumptionOneKm = vehicle.getAverageConsumption()/100;
 
-                if(vehicle.getTypeOfFuel().equals("Diesel"))
+
+                if(vehicle.getTypeOfFuel().equals(FuelType.Diesel))
                 {
                     cost+=averageConsumptionOneKm*distance*f.getDieselPrice();
-                    System.out.println("cost: diesel:  "+cost);
+
                 }
-                else if(vehicle.getTypeOfFuel().equals("Patrol"))
+                else if(vehicle.getTypeOfFuel().equals(FuelType.Patrol))
                 {
                     cost+=averageConsumptionOneKm*distance*f.getPatrolPrice();
                 }
@@ -123,7 +124,6 @@ public class Calculator
                     if(vehicle instanceof Truck)
                     {
                         cost+=(route.getSpecialFee()*((Truck) vehicle).getAxles()*1.5);
-                        System.out.println(cost);
                     }
                     else if(vehicle instanceof Car)
                     {
@@ -135,7 +135,4 @@ public class Calculator
 
 return cost;
     }
-
-
-
 }
