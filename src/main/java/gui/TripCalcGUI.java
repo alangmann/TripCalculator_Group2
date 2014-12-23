@@ -368,7 +368,7 @@ public class TripCalcGUI extends JFrame{
         int i = 0;
         try {
 
-            String pathName = System.getProperty("user.dir")+ File.separator+ "src" + File.separator + "main"+
+            String pathName = System.getProperty("user.dir")+File.separator+ "trunk"+ File.separator+ "src" + File.separator + "main"+
                     File.separator + "resources" + File.separator+"routes.csv";
 
             br = new BufferedReader(new FileReader(pathName));
@@ -412,7 +412,7 @@ public class TripCalcGUI extends JFrame{
         int i = 0;
         try {
 
-            String pathName = System.getProperty("user.dir")+ File.separator+ "src" + File.separator + "main"+
+            String pathName = System.getProperty("user.dir")+ File.separator+ "trunk"+File.separator+ "src" + File.separator + "main"+
                     File.separator + "resources" + File.separator+"sprit_db.csv";
 
             br = new BufferedReader(new FileReader(pathName));
