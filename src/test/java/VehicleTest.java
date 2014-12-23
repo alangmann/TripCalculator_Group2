@@ -18,20 +18,6 @@ public class VehicleTest
         vehicle = new Vehicle(FuelType.Diesel, 5,10);
     }
 
-
-    /**
-     * public void setAverageConsumption(double averageConsumption) {
-
-     public void setCargo(int cargo) {
-     this.cargo = cargo;
-
-     public void setTypeOfFuel(FuelType typeOfFuel) {
-     this.typeOfFuel = typeOfFuel;
-     }
-     */
-
-
-
     @Test
     public void setAvgConsumtptionTo10Point2() {
         vehicle = new Vehicle(FuelType.Diesel, 5,20);

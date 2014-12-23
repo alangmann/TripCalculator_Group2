@@ -321,7 +321,10 @@ public class TripCalcGUI extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                datenAutoEinlesen();
+                //txFuelConsumptionCar.getText() ==null || txFuelConsumptionCar.getText().equals("") || txCargoCar.getText() == null || txCargoCar.getText().equals("")
+                String fuelConsumption = txFuelConsumptionCar.getText();
+                String cargo = txCargoCar.getText();
+                datenAutoEinlesen(fuelConsumption, cargo);
                 co2= 0;
                 cost = 0;
                 String curDay = getCurrentWeekDay(weekDay);
@@ -340,8 +343,12 @@ public class TripCalcGUI extends JFrame{
         btSubmitT.addActionListener(new ActionListener(
         ) {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                datenTruckEinlesen();
+            public void actionPerformed(ActionEvent e)
+            {
+                String fuelConsumption = txFuelConT.getText();
+                String cargo = txCargoT.getText();
+                String axles = txAxlesT.getText();
+                datenTruckEinlesen(fuelConsumption, cargo, axles);
                 co2= 0;
                 cost = 0;
                 String curDay = getCurrentWeekDay(weekDay);
@@ -361,43 +368,25 @@ public class TripCalcGUI extends JFrame{
 
 
 
-    public void datenAutoEinlesen()
+    public void datenAutoEinlesen(String fuelConsumption, String cargo)
     {
-        try
-        {
-            if(txFuelConsumptionCar.getText() ==null || txFuelConsumptionCar.getText().equals("") || txCargoCar.getText() == null || txCargoCar.getText().equals(""))
-            {
-                throw new Exception("Bitte geben Sie einen numerischen Wert in die Textfelder ein");
-            }
 
-            double fuelConsumption = Double.parseDouble(txFuelConsumptionCar.getText().replace(",", "."));
-            int cargo = Integer.parseInt(txCargoCar.getText());
+            double fuelConsumptionDouble = Double.parseDouble(fuelConsumption);
+            int cargoInt = Integer.parseInt(cargo);
             FuelType typeOfFuel = FuelType.valueOf(cbTypeOfFuelCar.getSelectedItem().toString());
-            c = new Car(typeOfFuel, cargo, fuelConsumption);
+            c = new Car(typeOfFuel, cargoInt, fuelConsumptionDouble);
 
 
-        }
-        catch(Exception ex)
-        {
-            JOptionPane.showMessageDialog(this, ex.getMessage());
-        }
 
     }
 
-    public void datenTruckEinlesen()
+    public void datenTruckEinlesen(String fuelConsumption, String cargo, String axles)
     {
-        try {
 
-            if(txFuelConT.getText() ==null || txFuelConT.getText().equals("") || txCargoT.getText() == null ||
-                    txCargoT.getText().equals("") || txAxlesT.getText()==null || txAxlesT.getText().equals(""))
-            {
-                throw new Exception("Bitte geben Sie einen numerischen Wert in die Textfelder ein");
-            }
-
-            double fuelConsumption = Double.parseDouble(txFuelConT.getText().replace(",", "."));
-            int cargo = Integer.parseInt(txCargoT.getText());
+            double fuelConsumptionDouble = Double.parseDouble(txFuelConT.getText().replace(",", "."));
+            int cargoInt = Integer.parseInt(txCargoT.getText());
             FuelType typeOfFuel = FuelType.valueOf(cbTypeFuelT.getSelectedItem().toString());
-            int axles = Integer.parseInt(txAxlesT.getText());
+            int axlesInt = Integer.parseInt(txAxlesT.getText());
             boolean adBlue = false;
             if (chbAdBlueT.isSelected()) {
                 adBlue = true;
@@ -405,12 +394,7 @@ public class TripCalcGUI extends JFrame{
                 adBlue = false;
             }
 
-            t = new Truck(typeOfFuel, cargo, fuelConsumption, adBlue, axles);
-        }
-        catch(Exception ex)
-        {
-            JOptionPane.showMessageDialog(this, ex.getMessage());
-        }
+            t = new Truck(typeOfFuel, cargoInt, fuelConsumptionDouble, adBlue, axlesInt);
     }
 
 
