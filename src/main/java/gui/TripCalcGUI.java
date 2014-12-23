@@ -361,7 +361,7 @@ public class TripCalcGUI extends JFrame{
 
 
 
-    public boolean datenAutoEinlesen()
+    public void datenAutoEinlesen()
     {
         try
         {
@@ -374,14 +374,14 @@ public class TripCalcGUI extends JFrame{
             int cargo = Integer.parseInt(txCargoCar.getText());
             FuelType typeOfFuel = FuelType.valueOf(cbTypeOfFuelCar.getSelectedItem().toString());
             c = new Car(typeOfFuel, cargo, fuelConsumption);
-            return true;
+
 
         }
         catch(Exception ex)
         {
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }
-        return false;
+
     }
 
     public void datenTruckEinlesen()
