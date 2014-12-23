@@ -175,12 +175,10 @@ public class CalculatorTest
         assertThat(calc.calculateCo2Consumption(r, t), equalTo(2.2889438999999996));
     }
 
-//calculate Costs
-   // Route route, Vehicle vehicle, String dayOfWeek, LinkedList<FuelPrices> fuelprices
-
+//calculate Costs with Truck
 
     @Test
-    public void calculateTotalCostOfRouteWithCarHighwayOnMonday()
+    public void calculateTotalCostOfRouteWithCarHighwayOnMondayWithDiesel()
     {
         String f = new File(System.getProperty("user.dir")).getParent();
         String path = f+ "\\main\\resources\\sprit_db.csv";
@@ -193,7 +191,7 @@ public class CalculatorTest
 
 
     @Test
-    public void calculateTotalCostOfRouteWithCarCountryRoadOnMonday()
+    public void calculateTotalCostOfRouteWithCarCountryRoadOnMondayWithDiesel()
     {
         String f = new File(System.getProperty("user.dir")).getParent();
         String path = f+ "\\main\\resources\\sprit_db.csv";
@@ -207,14 +205,155 @@ public class CalculatorTest
 
 
     @Test
-    public void calculateTotalCostOfRouteWithCarGravelRoadOnMonday()
+    public void calculateTotalCostOfRouteWithCarGravelRoadOnMondayWithDiesel()
     {
         String f = new File(System.getProperty("user.dir")).getParent();
         String path = f+ "\\main\\resources\\sprit_db.csv";
         LinkedList<FuelPrices> fuelPricesList = calc.readCSVSprit(path);
         Car c = new Car(FuelType.Diesel, 10, 5);
-        Route r = new Route(10, RouteType.Highway, 5, 5);
+        Route r = new Route(10, RouteType.GravelRoad, 5, 5);
 
         assertThat(calc.calculateTotalCostOfRoute(r, c, "Monday", fuelPricesList), equalTo(5.6605));
+    }
+
+
+    @Test
+    public void calculateTotalCostOfRouteWithCarHighwayOnMondayWithPatrol()
+    {
+        String f = new File(System.getProperty("user.dir")).getParent();
+        String path = f+ "\\main\\resources\\sprit_db.csv";
+        LinkedList<FuelPrices> fuelPricesList = calc.readCSVSprit(path);
+        Car c = new Car(FuelType.Patrol, 10, 5);
+        Route r = new Route(10, RouteType.Highway, 5, 5);
+
+        assertThat(calc.calculateTotalCostOfRoute(r, c, "Monday", fuelPricesList), equalTo(5.729));
+    }
+
+
+    @Test
+    public void calculateTotalCostOfRouteWithCarCountryRoadOnMondayWithPatrol()
+    {
+        String f = new File(System.getProperty("user.dir")).getParent();
+        String path = f+ "\\main\\resources\\sprit_db.csv";
+        LinkedList<FuelPrices> fuelPricesList = calc.readCSVSprit(path);
+        Car c = new Car(FuelType.Patrol, 10, 5);
+        Route r = new Route(10, RouteType.CountryRoad, 5, 5);
+
+        assertThat(calc.calculateTotalCostOfRoute(r, c, "Monday", fuelPricesList), equalTo(5.729));
+    }
+
+
+
+    @Test
+    public void calculateTotalCostOfRouteWithCarGravelRoadOnMondayWithPatrol()
+    {
+        String f = new File(System.getProperty("user.dir")).getParent();
+        String path = f+ "\\main\\resources\\sprit_db.csv";
+        LinkedList<FuelPrices> fuelPricesList = calc.readCSVSprit(path);
+        Car c = new Car(FuelType.Patrol, 10, 5);
+        Route r = new Route(10, RouteType.GravelRoad, 5, 5);
+
+        assertThat(calc.calculateTotalCostOfRoute(r, c, "Monday", fuelPricesList), equalTo(5.729));
+    }
+//Truck
+
+    @Test
+    public void calculateTotalCostOfRouteWithTruckHighwayOnMondayWithDiesel()
+    {
+        String f = new File(System.getProperty("user.dir")).getParent();
+        String path = f+ "\\main\\resources\\sprit_db.csv";
+        LinkedList<FuelPrices> fuelPricesList = calc.readCSVSprit(path);
+        Truck t = new Truck(FuelType.Diesel, 10, 5, false, 2);
+        Car c = new Car(FuelType.Diesel, 10, 5);
+        Route r = new Route(10, RouteType.Highway, 5, 5);
+
+        assertThat(calc.calculateTotalCostOfRoute(r, t, "Monday", fuelPricesList), equalTo(15.6605));
+    }
+
+
+    @Test
+    public void calculateTotalCostOfRouteWithTruckCountryRoadOnMondayWithDiesel()
+    {
+        String f = new File(System.getProperty("user.dir")).getParent();
+        String path = f+ "\\main\\resources\\sprit_db.csv";
+        LinkedList<FuelPrices> fuelPricesList = calc.readCSVSprit(path);
+        Truck t = new Truck(FuelType.Diesel, 10, 5, false, 2);
+        Route r = new Route(10, RouteType.CountryRoad, 5, 5);
+
+        assertThat(calc.calculateTotalCostOfRoute(r, t, "Monday", fuelPricesList), equalTo(15.6605));
+    }
+
+
+
+    @Test
+    public void calculateTotalCostOfRouteWithTruckGravelRoadOnMondayWithDiesel()
+    {
+        String f = new File(System.getProperty("user.dir")).getParent();
+        String path = f+ "\\main\\resources\\sprit_db.csv";
+        LinkedList<FuelPrices> fuelPricesList = calc.readCSVSprit(path);
+        Truck t = new Truck(FuelType.Diesel, 10, 5, false, 2);
+        Route r = new Route(10, RouteType.GravelRoad, 5, 5);
+
+        assertThat(calc.calculateTotalCostOfRoute(r, t, "Monday", fuelPricesList), equalTo(15.6605));
+    }
+
+
+    @Test
+    public void calculateTotalCostOfRouteWithTruckHighwayOnMondayWithPatrol()
+    {
+        String f = new File(System.getProperty("user.dir")).getParent();
+        String path = f+ "\\main\\resources\\sprit_db.csv";
+        LinkedList<FuelPrices> fuelPricesList = calc.readCSVSprit(path);
+        Truck t = new Truck(FuelType.Patrol, 10, 5, false, 2);
+        Route r = new Route(10, RouteType.Highway, 5, 5);
+
+        assertThat(calc.calculateTotalCostOfRoute(r, t, "Monday", fuelPricesList), equalTo(15.729));
+    }
+
+
+    @Test
+    public void calculateTotalCostOfRouteWithTruckCountryRoadOnMondayWithPatrol()
+    {
+        String f = new File(System.getProperty("user.dir")).getParent();
+        String path = f+ "\\main\\resources\\sprit_db.csv";
+        LinkedList<FuelPrices> fuelPricesList = calc.readCSVSprit(path);
+        Truck t = new Truck(FuelType.Patrol, 10, 5, false, 2);
+        Route r = new Route(10, RouteType.CountryRoad, 5, 5);
+
+        assertThat(calc.calculateTotalCostOfRoute(r, t, "Monday", fuelPricesList), equalTo(15.729));
+    }
+
+
+
+    @Test
+    public void calculateTotalCostOfRouteWithTruckGravelRoadOnMondayWithPatrol()
+    {
+        String f = new File(System.getProperty("user.dir")).getParent();
+        String path = f+ "\\main\\resources\\sprit_db.csv";
+        LinkedList<FuelPrices> fuelPricesList = calc.readCSVSprit(path);
+        Truck t = new Truck(FuelType.Patrol, 10, 5, false, 2);
+        Route r = new Route(10, RouteType.GravelRoad, 5, 5);
+
+        assertThat(calc.calculateTotalCostOfRoute(r, t, "Monday", fuelPricesList), equalTo(15.729));
+    }
+
+//Test csv einlesen
+
+    @Test
+    public void testIfReadCSVRoutesReturnsNoError()
+    {
+        String f = new File(System.getProperty("user.dir")).getParent();
+        String path = f+ "\\main\\resources\\routes.csv";
+
+        Assert.assertNotNull(calc.readCSVRoutes(path));
+    }
+
+    @Test
+    public void testIfReadCSVRSpritDBReturnsNoError()
+    {
+        String f = new File(System.getProperty("user.dir")).getParent();
+        String path = f+ "\\main\\resources\\sprit_db.csv";
+
+        Assert.assertNotNull(calc.readCSVRoutes(path));
     }
 }
