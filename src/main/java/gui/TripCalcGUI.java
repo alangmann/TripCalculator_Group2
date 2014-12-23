@@ -16,8 +16,8 @@ import java.util.LinkedList;
 
 public class TripCalcGUI extends JFrame{
 
-    private String routePath = System.getProperty("user.dir")+ "\\trunk\\src\\main\\resources\\routes.csv";
-    private String spritPath = System.getProperty("user.dir")+ "\\trunk\\src\\main\\resources\\sprit_db.csv";
+    private static String routePath = System.getProperty("user.dir")+ "\\trunk\\src\\main\\resources\\routes.csv";
+    private static String spritPath = System.getProperty("user.dir")+ "\\trunk\\src\\main\\resources\\sprit_db.csv";
     private Calendar cal = Calendar.getInstance();
     private int weekDay = cal.get(Calendar.DAY_OF_WEEK);
 
@@ -79,14 +79,14 @@ public class TripCalcGUI extends JFrame{
     private double cost = 0;
 
 
-    public TripCalcGUI() throws HeadlessException
+    public TripCalcGUI(String rPath, String sPath) throws HeadlessException
     {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setSize(700, 250);
         this.setLocationRelativeTo(null);
 
-        routeList = calc.readCSVRoutes(routePath);
-        fuelPricesList = calc.readCSVSprit(spritPath);
+        routeList = calc.readCSVRoutes(rPath);
+        fuelPricesList = calc.readCSVSprit(sPath);
 
         init();
 
@@ -418,7 +418,7 @@ public class TripCalcGUI extends JFrame{
 
     public static void main(String[] args)
     {
-        new TripCalcGUI().setVisible(true);
+        new TripCalcGUI(routePath, spritPath).setVisible(true);
     }
 
 }
