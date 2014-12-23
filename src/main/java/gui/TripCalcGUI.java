@@ -330,10 +330,10 @@ public class TripCalcGUI extends JFrame{
                     co2+= calc.calculateCo2Consumption(r, c);
                     //Route route, Vehicle vehicle, String dayOfWeek, LinkedList<FuelPrices> fuelprices
                     cost+=calc.calculateTotalCostOfRoute(r, c, curDay, fuelPricesList);
-
+                    txCostCar.setText(cost+"€");
                 }
-                txCostCar.setText(String.format("%.2f Euro",cost));
-                txOutputCar.setText(String.format("%.2f",co2));
+
+                txOutputCar.setText(co2+"");
 
             }
         });
@@ -351,11 +351,10 @@ public class TripCalcGUI extends JFrame{
                 {
                     co2+= calc.calculateCo2Consumption(r, t);
                     cost+=calc.calculateTotalCostOfRoute(r, t, curDay, fuelPricesList);
-
+                    txCostTruck.setText(String.format("%f.2",cost)+"€");
                 }
 
-                txCostTruck.setText(String.format("%.2f Euro",cost));
-                txOutputT.setText(String.format("%.2f",co2));
+                txOutputT.setText(co2+"");
             }
         });
 
@@ -445,7 +444,8 @@ public class TripCalcGUI extends JFrame{
         {
             JOptionPane.showMessageDialog(null, ex.toString());
         }
-
+//dfgdfgdfg
+//sdsdf
     }
 
     public void datenAutoEinlesen()

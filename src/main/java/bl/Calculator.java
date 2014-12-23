@@ -94,7 +94,7 @@ public class Calculator
         }
 
         return resultCo2;
-    }
+    }//fgfgfgfg
 
     //parameter "fuelprices" hinzugefügt, weicht deshalb vom Klassendiagramm ab
     public double calculateTotalCostOfRoute(Route route, Vehicle vehicle, String dayOfWeek, LinkedList<FuelPrices> fuelprices)
