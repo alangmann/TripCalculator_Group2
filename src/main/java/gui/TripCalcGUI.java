@@ -375,6 +375,7 @@ public class TripCalcGUI extends JFrame{
             FuelType typeOfFuel = FuelType.valueOf(cbTypeOfFuelCar.getSelectedItem().toString());
             c = new Car(typeOfFuel, cargo, fuelConsumption);
 
+
         }
         catch(Exception ex)
         {

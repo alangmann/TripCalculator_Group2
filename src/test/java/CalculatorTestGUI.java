@@ -17,10 +17,8 @@ public class CalculatorTestGUI
 
     @Before
     public void setUp() {
-
+        gui = new TripCalcGUI();
     }
-
-
 
 
 }
