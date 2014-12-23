@@ -34,7 +34,7 @@ public class Calculator
                 co2Consumption = vehicle.getAverageConsumption()*CO2_CONSUMPTION_PETROL;
             }
 
-            double co2ConsumptionsNeu = 0.0005*vehicle.getCargo();
+            double co2ConsumptionsNeu = 0.005*vehicle.getCargo();
             if(route.getSlope() < 0)
             {
                 return 0;
@@ -69,8 +69,6 @@ public class Calculator
             double co2ConsumptionsNeu = 0.0005*vehicle.getCargo();
 
 
-
-            System.out.println(route.getTypeOfRoute().toString());
             if(route.getSlope() < 0)
             {
                 return 0;
@@ -113,6 +111,7 @@ public class Calculator
                 if(vehicle.getTypeOfFuel().equals("Diesel"))
                 {
                     cost+=averageConsumptionOneKm*distance*f.getDieselPrice();
+                    System.out.println("cost: diesel:  "+cost);
                 }
                 else if(vehicle.getTypeOfFuel().equals("Patrol"))
                 {
@@ -124,6 +123,7 @@ public class Calculator
                     if(vehicle instanceof Truck)
                     {
                         cost+=(route.getSpecialFee()*((Truck) vehicle).getAxles()*1.5);
+                        System.out.println(cost);
                     }
                     else if(vehicle instanceof Car)
                     {
