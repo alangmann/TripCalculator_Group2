@@ -23,11 +23,5 @@ public class CalculatorTestGUI
         gui = new TripCalcGUI();
     }
 
-    @Test
-    public void setAdBlueToFalse() {
-
-        assertTrue(gui.datenAutoEinlesen());
-    }
-
 
 }
