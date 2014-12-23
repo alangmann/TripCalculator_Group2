@@ -328,18 +328,11 @@ public class TripCalcGUI extends JFrame{
                 for(Route r : routeList)
                 {
                     co2+= calc.calculateCo2Consumption(r, c);
-
                     cost+=calc.calculateTotalCostOfRoute(r, c, curDay, fuelPricesList);
-
                 }
 
                 txCostCar.setText(String.format("%.2f Euro",cost));
                 txOutputCar.setText(String.format("%.2f ",co2));
-
-
-                Vehicle v = new Vehicle(FuelType.Diesel, 10, 5);
-                Route r = new Route(10, RouteType.Highway, 5, 5);
-                System.out.println(calc.calculateCo2Consumption(r, v));
             }
         });
 
@@ -356,7 +349,6 @@ public class TripCalcGUI extends JFrame{
                 {
                     co2+= calc.calculateCo2Consumption(r, t);
                     cost+=calc.calculateTotalCostOfRoute(r, t, curDay, fuelPricesList);
-
                 }
                 txCostTruck.setText(String.format("%.2f Euro",cost));
                 txOutputT.setText(String.format("%.2f ",co2));
@@ -391,13 +383,8 @@ public class TripCalcGUI extends JFrame{
                             Double.parseDouble(strArray[3].replace(",",".")), Double.parseDouble(strArray[1].replace(",",".")));
 
                     routeList.add(r);
-
                 }
-
-
                 i++;
-
-
             }
             br.close();
 
@@ -406,8 +393,6 @@ public class TripCalcGUI extends JFrame{
         {
             JOptionPane.showMessageDialog(null, ex.toString());
         }
-
-
     }
 
     public void readCSVSprit()
@@ -436,10 +421,7 @@ public class TripCalcGUI extends JFrame{
                     fuelPricesList.add(fuelP);
 
                 }
-
-
                 i++;
-
 
             }
             br.close();

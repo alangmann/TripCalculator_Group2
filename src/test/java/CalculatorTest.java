@@ -19,7 +19,6 @@ public class CalculatorTest
         calc = new Calculator();
     }
 
-
     //Highway
     @Test
     public void calculateCo2ConsumptionWithCarDieselHighway()
