@@ -22,6 +22,7 @@ public class Calculator
         double factor;
         double co2Consumption = -1;
         double resultCo2 = -1;
+        double slope = route.getSlope()/(route.getDistance()*1000)+1;
 
         if(vehicle instanceof Car)
         {
@@ -49,7 +50,7 @@ public class Calculator
                 factor = 2;
             }
 
-            resultCo2 = route.getDistance() * (co2Consumption + co2ConsumptionsNeu) * route.getSlope() * factor;
+            resultCo2 = route.getDistance() * (co2Consumption + co2ConsumptionsNeu) * slope * factor;
             /**
              * 0,05 l mehr pro 100kg
              * 0,0005 l mehr pro 1kg
@@ -85,11 +86,11 @@ public class Calculator
 
             if(((Truck) vehicle).isAdBlue())
             {
-                resultCo2 = route.getDistance() * ((co2Consumption + co2ConsumptionsNeu)/100*93) * route.getSlope() * factor;
+                resultCo2 = route.getDistance() * ((co2Consumption + co2ConsumptionsNeu)/100*93) * slope * factor;
             }
             else
             {
-                resultCo2 = route.getDistance() * (co2Consumption + co2ConsumptionsNeu) * route.getSlope() * factor;
+                resultCo2 = route.getDistance() * (co2Consumption + co2ConsumptionsNeu) * slope * factor;
             }
         }
 
