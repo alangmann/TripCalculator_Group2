@@ -15,7 +15,7 @@ import java.util.Calendar;
 import java.util.LinkedList;
 
 public class TripCalcGUI extends JFrame{
-//kjhkjhkjh
+
 
 
     private JPanel paLeft = new JPanel();
@@ -81,6 +81,10 @@ public class TripCalcGUI extends JFrame{
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setSize(700, 250);
         this.setLocationRelativeTo(null);
+
+        routeList = calc.readCSVRoutes();
+        fuelPricesList = calc.readCSVSprit();
+
         init();
 
         Component[] comRight = paRight.getComponents();
@@ -305,10 +309,6 @@ public class TripCalcGUI extends JFrame{
         pa5.add(chbAdBlueT);
 
 
-
-        readCSVRoutes();
-        readCSVSprit();
-
         for(FuelType f : FuelType.values())
         {
             cbTypeOfFuelCar.addItem(f.toString());
@@ -332,7 +332,7 @@ public class TripCalcGUI extends JFrame{
                 }
 
                 txCostCar.setText(String.format("%.2f Euro",cost));
-                txOutputCar.setText(String.format("%.2f ",co2));
+                txOutputCar.setText(String.format("%.2f ", co2));
             }
         });
 
@@ -358,81 +358,7 @@ public class TripCalcGUI extends JFrame{
     }
 
 
-    public void readCSVRoutes()
-    {
-        BufferedReader br;
-        int i = 0;
-        try {
 
-            String pathName = System.getProperty("user.dir")+File.separator+ "trunk"+ File.separator+ "src" + File.separator + "main"+
-                    File.separator + "resources" + File.separator+"routes.csv";
-
-            br = new BufferedReader(new FileReader(pathName));
-
-
-            String str = "";
-            String[] strArray;
-
-            while ((str = br.readLine()) != null)
-            {
-                if(i!= 0)
-                {
-                    strArray = str.split(";");
-
-                    Route r = new Route(Double.parseDouble(strArray[0].replace(",",".")), RouteType.valueOf(strArray[2]),
-                            Double.parseDouble(strArray[3].replace(",",".")), Double.parseDouble(strArray[1].replace(",",".")));
-
-                    routeList.add(r);
-                }
-                i++;
-            }
-            br.close();
-
-
-        } catch (Exception ex)
-        {
-            JOptionPane.showMessageDialog(null, ex.toString());
-        }
-    }
-
-    public void readCSVSprit()
-    {
-        BufferedReader br;
-        int i = 0;
-        try {
-
-            String pathName = System.getProperty("user.dir")+ File.separator+ "trunk"+File.separator+ "src" + File.separator + "main"+
-                    File.separator + "resources" + File.separator+"sprit_db.csv";
-
-            br = new BufferedReader(new FileReader(pathName));
-
-
-            String str = "";
-            String[] strArray;
-
-            while ((str = br.readLine()) != null)
-            {
-                if(i!= 0)
-                {
-                    strArray = str.split(";");
-
-                    FuelPrices fuelP = new FuelPrices(strArray[0], Double.parseDouble(strArray[1].replace(",",".")), Double.parseDouble(strArray[2].replace(",",".")));
-
-                    fuelPricesList.add(fuelP);
-
-                }
-                i++;
-
-            }
-            br.close();
-
-
-        } catch (Exception ex)
-        {
-            JOptionPane.showMessageDialog(null, ex.toString());
-        }
-
-    }
 
     public void datenAutoEinlesen()
     {
@@ -483,9 +409,6 @@ public class TripCalcGUI extends JFrame{
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }
     }
-
-
-
 
 
 

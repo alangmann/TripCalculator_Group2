@@ -15,6 +15,9 @@ public class Calculator
     private static double CO2_CONSUMPTION_DIESEL = 0.0265;
     private static double CO2_CONSUMPTION_PETROL = 0.0236;
 
+    private LinkedList<Route> routeList = new LinkedList<Route>();
+    private LinkedList<FuelPrices> fuelPricesList = new LinkedList<FuelPrices>();
+
 
     public double calculateCo2Consumption(Route route, Vehicle vehicle)
     {
@@ -39,12 +42,16 @@ public class Calculator
             {
                 return 0;
             }
-            if(route.getTypeOfRoute().equals("Highway"))
+
+            if(route.getTypeOfRoute().equals(RouteType.Highway))
             {
                 factor = 1;
             }
-            else if(route.getTypeOfRoute().equals("CountryRoad")){factor = 1.2;}
-            else
+            else if(route.getTypeOfRoute().equals(RouteType.CountryRoad))
+            {
+                factor = 1.2;
+            }
+            else if(route.getTypeOfRoute().equals(RouteType.GravelRoad))
             {
                 factor = 2;
             }
@@ -73,12 +80,15 @@ public class Calculator
             {
                 return 0;
             }
-            if(route.getTypeOfRoute().equals("Highway"))
+            if(route.getTypeOfRoute().equals(RouteType.Highway))
             {
                 factor = 1;
             }
-            else if(route.getTypeOfRoute().equals("CountryRoad")){factor = 1.2;}
-            else if(route.getTypeOfRoute().equals("GravelRoad"))
+            else if(route.getTypeOfRoute().equals(RouteType.CountryRoad))
+            {
+                factor = 1.2;
+            }
+            else if(route.getTypeOfRoute().equals(RouteType.GravelRoad))
             {
                 factor = 2;
             }
@@ -117,6 +127,7 @@ public class Calculator
                 else if(vehicle.getTypeOfFuel().equals(FuelType.Patrol))
                 {
                     cost+=averageConsumptionOneKm*distance*f.getPatrolPrice();
+
                 }
 
                 if(route.getSpecialFee() != 0)
@@ -133,6 +144,89 @@ public class Calculator
             }
         }
 
-return cost;
+        return cost;
+    }
+
+
+
+    public LinkedList readCSVRoutes()
+    {
+        BufferedReader br;
+        int i = 0;
+        try {
+
+            String pathName = System.getProperty("user.dir")+ "\\trunk\\src\\main\\resources\\routes.csv";
+
+            br = new BufferedReader(new FileReader(pathName));
+
+
+            String str = "";
+            String[] strArray;
+
+            while ((str = br.readLine()) != null)
+            {
+                if(i!= 0)
+                {
+                    strArray = str.split(";");
+
+                    Route r = new Route(Double.parseDouble(strArray[0].replace(",",".")), RouteType.valueOf(strArray[2]),
+                            Double.parseDouble(strArray[3].replace(",",".")), Double.parseDouble(strArray[1].replace(",",".")));
+
+                    routeList.add(r);
+                }
+                i++;
+            }
+            br.close();
+
+
+        } catch (Exception ex)
+        {
+            JOptionPane.showMessageDialog(null, ex.toString());
+
+        }
+        return routeList;
+    }
+
+    public LinkedList readCSVSprit()
+    {
+        BufferedReader br;
+        int i = 0;
+        try {
+
+            String pathName = System.getProperty("user.dir")+ "\\trunk\\src\\main\\resources\\sprit_db.csv";
+
+            br = new BufferedReader(new FileReader(pathName));
+
+
+            String str = "";
+            String[] strArray;
+
+            while ((str = br.readLine()) != null)
+            {
+                if(i!= 0)
+                {
+                    strArray = str.split(";");
+
+                    FuelPrices fuelP = new FuelPrices(strArray[0], Double.parseDouble(strArray[1].replace(",",".")), Double.parseDouble(strArray[2].replace(",",".")));
+
+                    fuelPricesList.add(fuelP);
+
+                }
+                i++;
+
+            }
+            br.close();
+
+        } catch (Exception ex)
+        {
+            JOptionPane.showMessageDialog(null, ex.toString());
+
+        }
+        return fuelPricesList;
+    }
+
+    public LinkedList<FuelPrices> getFuelPricesList() {
+
+        return fuelPricesList;
     }
 }
