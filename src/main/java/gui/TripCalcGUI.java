@@ -333,7 +333,7 @@ public class TripCalcGUI extends JFrame{
                 }
 
                 txCostCar.setText(String.format("%.2f Euro",cost));
-                txOutputCar.setText(String.format("%.2f ", co2));
+                txOutputCar.setText(String.format("%.2f kg", co2));
             }
         });
 
@@ -352,7 +352,7 @@ public class TripCalcGUI extends JFrame{
                     cost+=calc.calculateTotalCostOfRoute(r, t, curDay, fuelPricesList);
                 }
                 txCostTruck.setText(String.format("%.2f Euro",cost));
-                txOutputT.setText(String.format("%.2f ",co2));
+                txOutputT.setText(String.format("%.2f kg",co2));
             }
         });
 
