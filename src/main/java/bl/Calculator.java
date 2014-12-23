@@ -34,7 +34,7 @@ public class Calculator
                 co2Consumption = vehicle.getAverageConsumption()*CO2_CONSUMPTION_PETROL;
             }
 
-            double co2ConsumptionsNeu = 0.0005*vehicle.getCargo();
+            double co2ConsumptionsNeu = 0.005*vehicle.getCargo();
             if(route.getSlope() < 0)
             {
                 return 0;
@@ -69,8 +69,6 @@ public class Calculator
             double co2ConsumptionsNeu = 0.0005*vehicle.getCargo();
 
 
-
-            System.out.println(route.getTypeOfRoute().toString());
             if(route.getSlope() < 0)
             {
                 return 0;
@@ -96,7 +94,7 @@ public class Calculator
         }
 
         return resultCo2;
-    }
+    }//fgfgfgfg
 
     //parameter "fuelprices" hinzugefügt, weicht deshalb vom Klassendiagramm ab
     public double calculateTotalCostOfRoute(Route route, Vehicle vehicle, String dayOfWeek, LinkedList<FuelPrices> fuelprices)
