@@ -23,5 +23,12 @@ public class CalculatorTestGUI
         gui = new TripCalcGUI();
     }
 
-
+    //public String getCurrentWeekDay()
+    @Test
+    public void getCurrentWeekDayMonday()
+    {
+        Calendar cal = Calendar.getInstance();
+        int weekDay = 0;
+        assertThat(gui.getCurrentWeekDay(weekDay), equalTo("Monday"));
+    }
 }

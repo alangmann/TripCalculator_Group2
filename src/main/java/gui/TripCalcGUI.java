@@ -18,6 +18,8 @@ public class TripCalcGUI extends JFrame{
 
     private String routePath = System.getProperty("user.dir")+ "\\trunk\\src\\main\\resources\\routes.csv";
     private String spritPath = System.getProperty("user.dir")+ "\\trunk\\src\\main\\resources\\sprit_db.csv";
+    private Calendar cal = Calendar.getInstance();
+    private int weekDay = cal.get(Calendar.DAY_OF_WEEK);
 
     private JPanel paLeft = new JPanel();
     private JPanel paRight = new JPanel();
@@ -116,10 +118,8 @@ public class TripCalcGUI extends JFrame{
         txOutputT.setEditable(false);
     }
 
-    public String getCurrentWeekDay()
+    public String getCurrentWeekDay(int weekDay)
     {
-        Calendar cal = Calendar.getInstance();
-        int weekDay = cal.get(Calendar.DAY_OF_WEEK);
         String curDay ="";
 
         switch(weekDay)
@@ -324,7 +324,7 @@ public class TripCalcGUI extends JFrame{
                 datenAutoEinlesen();
                 co2= 0;
                 cost = 0;
-                String curDay = getCurrentWeekDay();
+                String curDay = getCurrentWeekDay(weekDay);
 
                 for(Route r : routeList)
                 {
@@ -344,7 +344,7 @@ public class TripCalcGUI extends JFrame{
                 datenTruckEinlesen();
                 co2= 0;
                 cost = 0;
-                String curDay = getCurrentWeekDay();
+                String curDay = getCurrentWeekDay(weekDay);
 
                 for(Route r : routeList)
                 {
