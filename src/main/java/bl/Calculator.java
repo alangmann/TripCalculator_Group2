@@ -149,13 +149,12 @@ public class Calculator
 
 
 
-    public LinkedList readCSVRoutes()
+    public LinkedList readCSVRoutes(String pathName)
     {
         BufferedReader br;
         int i = 0;
         try {
 
-            String pathName = System.getProperty("user.dir")+ "\\trunk\\src\\main\\resources\\routes.csv";
 
             br = new BufferedReader(new FileReader(pathName));
 
@@ -187,13 +186,12 @@ public class Calculator
         return routeList;
     }
 
-    public LinkedList readCSVSprit()
+    public LinkedList readCSVSprit(String pathName)
     {
         BufferedReader br;
         int i = 0;
         try {
 
-            String pathName = System.getProperty("user.dir")+ "\\trunk\\src\\main\\resources\\sprit_db.csv";
 
             br = new BufferedReader(new FileReader(pathName));
 
@@ -225,8 +223,5 @@ public class Calculator
         return fuelPricesList;
     }
 
-    public LinkedList<FuelPrices> getFuelPricesList() {
 
-        return fuelPricesList;
-    }
 }

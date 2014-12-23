@@ -16,7 +16,8 @@ import java.util.LinkedList;
 
 public class TripCalcGUI extends JFrame{
 
-
+    private String routePath = System.getProperty("user.dir")+ "\\trunk\\src\\main\\resources\\routes.csv";
+    private String spritPath = System.getProperty("user.dir")+ "\\trunk\\src\\main\\resources\\sprit_db.csv";
 
     private JPanel paLeft = new JPanel();
     private JPanel paRight = new JPanel();
@@ -82,8 +83,8 @@ public class TripCalcGUI extends JFrame{
         this.setSize(700, 250);
         this.setLocationRelativeTo(null);
 
-        routeList = calc.readCSVRoutes();
-        fuelPricesList = calc.readCSVSprit();
+        routeList = calc.readCSVRoutes(routePath);
+        fuelPricesList = calc.readCSVSprit(spritPath);
 
         init();
 

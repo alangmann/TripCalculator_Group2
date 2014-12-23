@@ -5,6 +5,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.File;
 import java.util.LinkedList;
 
 import static org.junit.Assert.assertThat;
@@ -14,6 +15,7 @@ import static org.junit.Assert.assertThat;
 public class CalculatorTest
 {
     private Calculator calc;
+    private TripCalcGUI gui;
     private static double CO2_CONSUMPTION_DIESEL = 0.0265;
     private static double CO2_CONSUMPTION_PETROL = 0.0236;
 
@@ -180,15 +182,39 @@ public class CalculatorTest
     @Test
     public void calculateTotalCostOfRouteWithCarHighwayOnMonday()
     {
-
-        LinkedList<FuelPrices> fuelPricesList = calc.getFuelPricesList();
-        System.out.println(fuelPricesList.toString());
+        String f = new File(System.getProperty("user.dir")).getParent();
+        String path = f+ "\\main\\resources\\sprit_db.csv";
+        LinkedList<FuelPrices> fuelPricesList = calc.readCSVSprit(path);
         Car c = new Car(FuelType.Diesel, 10, 5);
         Route r = new Route(10, RouteType.Highway, 5, 5);
 
-
-        assertThat(calc.calculateTotalCostOfRoute(r, c, "Monday", fuelPricesList), equalTo(1.1));
-
+        assertThat(calc.calculateTotalCostOfRoute(r, c, "Monday", fuelPricesList), equalTo(5.6605));
     }
 
+
+    @Test
+    public void calculateTotalCostOfRouteWithCarCountryRoadOnMonday()
+    {
+        String f = new File(System.getProperty("user.dir")).getParent();
+        String path = f+ "\\main\\resources\\sprit_db.csv";
+        LinkedList<FuelPrices> fuelPricesList = calc.readCSVSprit(path);
+        Car c = new Car(FuelType.Diesel, 10, 5);
+        Route r = new Route(10, RouteType.CountryRoad, 5, 5);
+
+        assertThat(calc.calculateTotalCostOfRoute(r, c, "Monday", fuelPricesList), equalTo(5.6605));
+    }
+
+
+
+    @Test
+    public void calculateTotalCostOfRouteWithCarGravelRoadOnMonday()
+    {
+        String f = new File(System.getProperty("user.dir")).getParent();
+        String path = f+ "\\main\\resources\\sprit_db.csv";
+        LinkedList<FuelPrices> fuelPricesList = calc.readCSVSprit(path);
+        Car c = new Car(FuelType.Diesel, 10, 5);
+        Route r = new Route(10, RouteType.Highway, 5, 5);
+
+        assertThat(calc.calculateTotalCostOfRoute(r, c, "Monday", fuelPricesList), equalTo(5.6605));
+    }
 }
