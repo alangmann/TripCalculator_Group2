@@ -15,7 +15,7 @@ import java.util.Calendar;
 import java.util.LinkedList;
 
 public class TripCalcGUI extends JFrame{
-//kjhkjhkjhsdfsdfsdf
+//kjhkjhkjhsdfsdfsdflsdkfjöaslkdfjölasdkfjölsdkfjölsdkfjlöskdfjösldkfjasölkdfjösladkf
 
 
     private JPanel paLeft = new JPanel();
