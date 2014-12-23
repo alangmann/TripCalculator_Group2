@@ -336,6 +336,10 @@ public class TripCalcGUI extends JFrame{
                 txCostCar.setText(String.format("%.2f Euro",cost));
                 txOutputCar.setText(String.format("%.2f ",co2));
 
+//
+                Vehicle v = new Vehicle(FuelType.Diesel, 10, 5);
+                Route r = new Route(10, RouteType.Highway, 5, 5);
+                System.out.println(calc.calculateCo2Consumption(r, v));
             }
         });
 
