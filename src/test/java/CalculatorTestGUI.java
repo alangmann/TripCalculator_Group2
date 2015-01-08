@@ -73,11 +73,19 @@ public class CalculatorTestGUI
         assertThat(gui.getCurrentWeekDay(weekDay), equalTo("Saturday"));
     }
     @Test
-    public void getCurrentWeekDaySunday()
+         public void getCurrentWeekDaySunday()
+{
+    Calendar cal = Calendar.getInstance();
+    int weekDay = 6;
+    assertThat(gui.getCurrentWeekDay(weekDay), equalTo("Sunday"));
+}
+
+    @Test
+    public void getCurrentWeekDayError()
     {
         Calendar cal = Calendar.getInstance();
-        int weekDay = 6;
-        assertThat(gui.getCurrentWeekDay(weekDay), equalTo("Sunday"));
+        int weekDay = 10;
+        assertThat(gui.getCurrentWeekDay(weekDay), equalTo("Error"));
     }
 
     //Car
