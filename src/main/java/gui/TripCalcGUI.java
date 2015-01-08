@@ -212,7 +212,6 @@ public class TripCalcGUI extends JFrame{
                     txCargoCar.setEnabled(false);
                     cbTypeOfFuelCar.setEnabled(false);
 
-
                     rbCar.setEnabled(true);
                     rbTruck.setEnabled(true);
 
@@ -323,16 +322,9 @@ public class TripCalcGUI extends JFrame{
                 datenAutoEinlesen(fuelConsumption, cargo);
                 co2= 0;
                 cost = 0;
-                String curDay = getCurrentWeekDay(weekDay);
 
-                for(Route r : routeList)
-                {
-                    co2+= calc.calculateCo2Consumption(r, c);
-                    cost+=calc.calculateTotalCostOfRoute(r, c, curDay, fuelPricesList);
-                }
 
-                txCostCar.setText(String.format("%.2f Euro",cost));
-                txOutputCar.setText(String.format("%.2f kg", co2));
+                berechnungCar();
             }
         });
 
@@ -363,6 +355,20 @@ public class TripCalcGUI extends JFrame{
 
 
 
+    public double berechnungCar()
+    {
+        String curDay = getCurrentWeekDay(weekDay);
+        for(Route r : routeList)
+        {
+            co2+= calc.calculateCo2Consumption(r, c);
+            cost+=calc.calculateTotalCostOfRoute(r, c, curDay, fuelPricesList);
+        }
+
+        txCostCar.setText(String.format("%.2f Euro",cost));
+        txOutputCar.setText(String.format("%.2f kg", co2));
+
+        return co2;
+    }
 
     public void datenAutoEinlesen(String fuelConsumption, String cargo)
     {

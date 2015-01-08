@@ -154,6 +154,21 @@ public class CalculatorTestGUI
     @Test
     public void testGUI()
     {
+
         TripCalcGUI gui = new TripCalcGUI(rPath, sPath);
     }
+
+
+
+
+    @Test
+    public void berechneCo2Car() {
+
+        gui.datenAutoEinlesen("10", "20");
+
+        assertThat(gui.berechnungCar(), equalTo(72.76740740000001));
+    }
+
+
+
 }
