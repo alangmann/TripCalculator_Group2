@@ -44,7 +44,5 @@ public class FuelPrices
     public void setPatrolPrice(double patrolPrice) {
         this.patrolPrice = patrolPrice;
     }
-
-
 }
 

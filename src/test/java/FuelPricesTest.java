@@ -14,53 +14,50 @@ import static org.junit.Assert.*;
 public class FuelPricesTest
 {
 
-    private Truck truck;
+    private FuelPrices fuelprices;
 
     @Before
     public void setUp() {
-        truck = new Truck(FuelType.Diesel, 5,10,false,2);
-    }
-
-
-
-
-    @Test
-    public void isAdBlueReturnsFalse() {
-        truck = new Truck(FuelType.Diesel, 5,10,false,2);
-        assertFalse(truck.isAdBlue());
+        fuelprices = new FuelPrices("Monday", 1.25,1.25);
     }
 
 
     @Test
-    public void isAdBlueReturnsTrue() {
-        truck = new Truck(FuelType.Diesel, 5,10,true,2);
-        assertTrue(truck.isAdBlue());
-    }
+    public void getWeekDay() {
 
-
-
-    @Test
-    public void getAxlesReturns4() {
-        truck = new Truck(FuelType.Diesel, 5,10,true,4);
-        assertEquals(truck.getAxles(), 4);
-    }
-
-
-    @Test
-    public void setAxlesReturns10() {
-        truck = new Truck(FuelType.Diesel, 5,10,true,4);
-        truck.setAxles(10);
-        assertEquals(truck.getAxles(), 10);
+        assertEquals(fuelprices.getWeekDay(), "Monday");
     }
 
     @Test
-    public void setAdBlueToFalse() {
-        truck = new Truck(FuelType.Diesel, 5,10,true,4);
-        truck.setAdBlue(false);
+    public void setWeekDay() {
 
-        assertFalse(truck.isAdBlue());
+        fuelprices.setWeekDay("Tuesday");
+        assertEquals(fuelprices.getWeekDay(), "Tuesday");
     }
 
+    @Test
+    public void getDieselPrice() {
 
+        assertThat(fuelprices.getDieselPrice(), equalTo(1.25));
+    }
 
+    @Test
+    public void setDieselPrice() {
+
+        fuelprices.setDieselPrice(10.0);
+        assertThat(fuelprices.getDieselPrice(), equalTo(10.0));
+    }
+
+    @Test
+    public void getPatrolPrice() {
+
+        assertThat(fuelprices.getPatrolPrice(), equalTo(1.25));
+    }
+
+    @Test
+    public void setPatrolPrice() {
+
+        fuelprices.setPatrolPrice(11.0);
+        assertThat(fuelprices.getPatrolPrice(), equalTo(11.0));
+    }
 }
