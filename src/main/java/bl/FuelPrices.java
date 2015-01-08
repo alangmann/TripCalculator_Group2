@@ -45,13 +45,6 @@ public class FuelPrices
         this.patrolPrice = patrolPrice;
     }
 
-    @Override
-    public String toString() {
-        return "FuelPrices{" +
-                "weekDay='" + weekDay + '\'' +
-                ", dieselPrice=" + dieselPrice +
-                ", patrolPrice=" + patrolPrice +
-                '}';
-    }
+
 }
 
