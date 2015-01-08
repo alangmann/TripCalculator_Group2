@@ -150,4 +150,10 @@ public class CalculatorTestGUI
     {
         gui.datenTruckEinlesen("15", "100", "");
     }
+
+    @Test
+    public void testGUI()
+    {
+        TripCalcGUI gui = new TripCalcGUI(rPath, sPath);
+    }
 }

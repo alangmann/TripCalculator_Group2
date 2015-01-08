@@ -375,7 +375,6 @@ public class TripCalcGUI extends JFrame{
 
     public void datenTruckEinlesen(String fuelConsumption, String cargo, String axles)
     {
-
             double fuelConsumptionDouble = Double.parseDouble(txFuelConT.getText().replace(",", "."));
             int cargoInt = Integer.parseInt(txCargoT.getText());
             FuelType typeOfFuel = FuelType.valueOf(cbTypeFuelT.getSelectedItem().toString());
@@ -394,6 +393,5 @@ public class TripCalcGUI extends JFrame{
     {
         new TripCalcGUI(routePath, spritPath).setVisible(true);
     }
-
 }
 
