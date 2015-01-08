@@ -10,3 +10,4 @@ public class Car extends Vehicle
         super(typeOfFuel, cargo, averageConsumption);
     }
 }
+//asdasdasd
