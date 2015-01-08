@@ -133,10 +133,8 @@ public class TripCalcGUI extends JFrame{
             case 6:curDay="Sunday";break;
             default: curDay="Error";
         }
-
         return curDay;
     }
-
     public void init()
     {
         Container con = this.getContentPane();
@@ -181,7 +179,6 @@ public class TripCalcGUI extends JFrame{
                     rbTruck.setEnabled(true);
 
                 }
-
             }
         });
 
@@ -321,7 +318,6 @@ public class TripCalcGUI extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                //txFuelConsumptionCar.getText() ==null || txFuelConsumptionCar.getText().equals("") || txCargoCar.getText() == null || txCargoCar.getText().equals("")
                 String fuelConsumption = txFuelConsumptionCar.getText();
                 String cargo = txCargoCar.getText();
                 datenAutoEinlesen(fuelConsumption, cargo);
@@ -375,9 +371,6 @@ public class TripCalcGUI extends JFrame{
             int cargoInt = Integer.parseInt(cargo);
             FuelType typeOfFuel = FuelType.valueOf(cbTypeOfFuelCar.getSelectedItem().toString());
             c = new Car(typeOfFuel, cargoInt, fuelConsumptionDouble);
-
-
-
     }
 
     public void datenTruckEinlesen(String fuelConsumption, String cargo, String axles)
@@ -396,9 +389,6 @@ public class TripCalcGUI extends JFrame{
 
             t = new Truck(typeOfFuel, cargoInt, fuelConsumptionDouble, adBlue, axlesInt);
     }
-
-
-
 
     public static void main(String[] args)
     {

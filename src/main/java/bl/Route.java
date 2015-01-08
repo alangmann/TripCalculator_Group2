@@ -48,16 +48,4 @@ public class Route
     public void setSpecialFee(double specialFee) {
         this.specialFee = specialFee;
     }
-
-
-
-    @Override
-    public String toString() {
-        return "Route{" +
-                "distance=" + distance +
-                ", typeOfRoute=" + typeOfRoute +
-                ", slope=" + slope +
-                ", specialFee=" + specialFee +
-                '}';
-    }
 }

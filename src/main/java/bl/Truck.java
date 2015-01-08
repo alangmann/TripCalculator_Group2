@@ -29,32 +29,4 @@ public class Truck extends Vehicle
     public void setAdBlue(boolean adBlue) {
         this.adBlue = adBlue;
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Truck)) return false;
-
-        Truck truck = (Truck) o;
-
-        if (adBlue != truck.adBlue) return false;
-        if (axles != truck.axles) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = axles;
-        result = 31 * result + (adBlue ? 1 : 0);
-        return result;
-    }
-
-    @Override
-    public String toString() {
-        return "Truck{" +
-                "axies=" + axles +
-                ", adBlue=" + adBlue +
-                '}';
-    }
 }
