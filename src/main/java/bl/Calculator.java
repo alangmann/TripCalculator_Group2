@@ -23,13 +23,21 @@ public class Calculator
 
     public double calculateCo2Consumption(Route route, Vehicle vehicle)
     {
+        if(route.getSlope() <= 0.0)
+        {
+            return 0.0;
+        }
+
         double factor = -1;
         double co2Consumption = -1;
         double resultCo2 = -1;
         double slope = route.getSlope()/(route.getDistance()*1000)+1;
 
+
+
         if(vehicle instanceof Car)
         {
+
             if(vehicle.getTypeOfFuel().equals(FuelType.Diesel))
             {
                 co2Consumption = vehicle.getAverageConsumption()*CO2_CONSUMPTION_DIESEL;
@@ -40,10 +48,7 @@ public class Calculator
             }
 
             double co2ConsumptionsNeu = 0.005*vehicle.getCargo();
-            if(route.getSlope() < 0)
-            {
-                return 0;
-            }
+
 
             if(route.getTypeOfRoute().equals(RouteType.Highway))
             {
@@ -77,11 +82,6 @@ public class Calculator
 
             double co2ConsumptionsNeu = 0.0005*vehicle.getCargo();
 
-
-            if(route.getSlope() < 0)
-            {
-                return 0;
-            }
             if(route.getTypeOfRoute().equals(RouteType.Highway))
             {
                 factor = 1;
@@ -183,7 +183,6 @@ public class Calculator
         } catch (Exception ex)
         {
             JOptionPane.showMessageDialog(null, ex.toString());
-
         }
         return routeList;
     }

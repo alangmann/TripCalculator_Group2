@@ -357,4 +357,29 @@ public class CalculatorTest
 
         Assert.assertNotNull(calc.readCSVSprit(path));
     }
+
+    @Test
+    public void testCarWithSlopeZero()
+    {
+        String f = new File(System.getProperty("user.dir")).getParent();
+        String path = f+ "\\main\\resources\\sprit_db.csv";
+        LinkedList<FuelPrices> fuelPricesList = calc.readCSVSprit(path);
+        Car c = new Car(FuelType.Diesel, 10, 5);
+        Route r = new Route(10, RouteType.CountryRoad, 5, 0);
+
+        assertThat(calc.calculateCo2Consumption(r,c), equalTo(0.0));
+    }
+
+    @Test
+    public void testTruckWithSlopeZero()
+    {
+        String f = new File(System.getProperty("user.dir")).getParent();
+        String path = f+ "\\main\\resources\\sprit_db.csv";
+        LinkedList<FuelPrices> fuelPricesList = calc.readCSVSprit(path);
+        Truck t = new Truck(FuelType.Patrol, 10, 5, false, 2);
+        Route r = new Route(10, RouteType.CountryRoad, 5, 0);
+
+        assertThat(calc.calculateCo2Consumption(r,t), equalTo(0.0));
+    }
+
 }
