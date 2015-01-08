@@ -18,6 +18,29 @@ public class VehicleTest
         vehicle = new Vehicle(FuelType.Diesel, 5,10);
     }
 
+
+    @Test
+    public void getAvgConsumtptionTo10Point2() {
+        assertThat(vehicle.getAverageConsumption(), equalTo(10.0));
+    }
+
+    @Test
+    public void getCargoTo10() {
+        assertEquals(vehicle.getCargo(), 5);
+    }
+
+    @Test
+    public void getTypeOfFuelToDiesel() {
+        assertEquals(vehicle.getTypeOfFuel(), FuelType.Diesel);
+    }
+
+    @Test
+    public void getTypeOfFuelToPatrol() {
+        vehicle = new Vehicle(FuelType.Patrol, 5,10);
+        assertEquals(vehicle.getTypeOfFuel(), FuelType.Patrol);
+    }
+
+
     @Test
     public void setAvgConsumtptionTo10Point2() {
         vehicle = new Vehicle(FuelType.Diesel, 5,20);
@@ -45,5 +68,7 @@ public class VehicleTest
         vehicle.setTypeOfFuel(FuelType.Patrol);
         assertEquals(vehicle.getTypeOfFuel(), FuelType.Patrol);
     }
+
+
 
 }

@@ -39,38 +39,5 @@ public class Vehicle
         this.typeOfFuel = typeOfFuel;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Vehicle)) return false;
 
-        Vehicle vehicle = (Vehicle) o;
-
-        if (Double.compare(vehicle.averageConsumption, averageConsumption) != 0) return false;
-        if (cargo != vehicle.cargo) return false;
-        if (typeOfFuel != vehicle.typeOfFuel) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result;
-        long temp;
-        temp = Double.doubleToLongBits(averageConsumption);
-        result = (int) (temp ^ (temp >>> 32));
-        result = 31 * result + (typeOfFuel != null ? typeOfFuel.hashCode() : 0);
-        result = 31 * result + cargo;
-        return result;
-    }
-
-
-    @Override
-    public String toString() {
-        return "Vehicle{" +
-                "averageConsumption=" + averageConsumption +
-                ", typeOfFuel=" + typeOfFuel +
-                ", cargo=" + cargo +
-                '}';
-    }
 }
