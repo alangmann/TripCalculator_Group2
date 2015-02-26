@@ -3,9 +3,15 @@
  */
 package gui;
 import bl.*;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.*;
+
+import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
@@ -14,10 +20,15 @@ import java.io.FileReader;
 import java.util.Calendar;
 import java.util.LinkedList;
 
+@org.springframework.stereotype.Component("GUI")
 public class TripCalcGUI extends JFrame{
-//Halllooooooo
-    private static String routePath = System.getProperty("user.dir")+ "\\trunk\\src\\main\\resources\\routes.csv";
-    private static String spritPath = System.getProperty("user.dir")+ "\\trunk\\src\\main\\resources\\sprit_db.csv";
+
+
+
+    //C:\Users\Yvonne\4CHIF\Java\Enterprise Application\TripCalculator_Group2\trunk\src\main\resources
+
+    private static String routePath = System.getProperty("user.dir")+ "\\src\\main\\resources\\routes.csv";
+    private static String spritPath = System.getProperty("user.dir")+ "\\src\\main\\resources\\sprit_db.csv";
     private Calendar cal = Calendar.getInstance();
     private int weekDay = cal.get(Calendar.DAY_OF_WEEK);
 
@@ -73,13 +84,15 @@ public class TripCalcGUI extends JFrame{
     private LinkedList<Route> routeList = new LinkedList<Route>();
     private LinkedList<FuelPrices> fuelPricesList = new LinkedList<FuelPrices>();
 
+    @Resource(name = "Car")
     private Car c;
+   // @Resource(name = "Truck")
     private Truck t;
     private double co2 = 0;
     private double cost = 0;
 
-
-    public TripCalcGUI(String rPath, String sPath) throws HeadlessException
+    @PostConstruct
+    public void setUP(String rPath, String sPath) throws HeadlessException
     {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setSize(700, 250);
@@ -376,7 +389,10 @@ public class TripCalcGUI extends JFrame{
             double fuelConsumptionDouble = Double.parseDouble(fuelConsumption);
             int cargoInt = Integer.parseInt(cargo);
             FuelType typeOfFuel = FuelType.valueOf(cbTypeOfFuelCar.getSelectedItem().toString());
-            c = new Car(typeOfFuel, cargoInt, fuelConsumptionDouble);
+           // c = new Car(typeOfFuel, cargoInt, fuelConsumptionDouble); //aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+        c.setTypeOfFuel(typeOfFuel);
+        c.setCargo(cargoInt);
+        c.setAverageConsumption(fuelConsumptionDouble);
     }
 
     public void datenTruckEinlesen(String fuelConsumption, String cargo, String axles)
@@ -392,12 +408,20 @@ public class TripCalcGUI extends JFrame{
                 adBlue = false;
             }
 
-            t = new Truck(typeOfFuel, cargoInt, fuelConsumptionDouble, adBlue, axlesInt);
+           // t = new Truck(typeOfFuel, cargoInt, fuelConsumptionDouble, adBlue, axlesInt); //aaaaaaaaaaaaaaaaa
+
+        t.setTypeOfFuel(typeOfFuel);
+        t.setCargo(cargoInt);
+        t.setAverageConsumption(fuelConsumptionDouble);
+        t.setAdBlue(adBlue);
+        t.setAxles(axlesInt);
     }
 
     public static void main(String[] args)
     {
-        new TripCalcGUI(routePath, spritPath).setVisible(true);
+       // new TripCalcGUI(routePath, spritPath).setVisible(true);
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring/spring-di-sample-annotation-context.xml");
+        context.getBean("GUI", JFrame.class).setVisible(true);
     }
 }
 

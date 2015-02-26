@@ -1,8 +1,11 @@
 package bl;
 
+import org.springframework.stereotype.Repository;
+
 /**
  * Created by Yvonne on 27.11.2014.
  */
+@Repository("Truck")
 public class Truck extends Vehicle
 {
     private int axles;

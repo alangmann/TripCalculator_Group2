@@ -1,8 +1,11 @@
 package bl;
 
+import org.springframework.stereotype.Repository;
+
 /**
  * Created by Yvonne on 27.11.2014.
  */
+
 public class Car extends Vehicle
 {
     public Car(FuelType typeOfFuel, int cargo, double averageConsumption)
@@ -10,4 +13,3 @@ public class Car extends Vehicle
         super(typeOfFuel, cargo, averageConsumption);
     }
 }
-//asdasdasd
