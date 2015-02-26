@@ -15,7 +15,7 @@ import java.util.Calendar;
 import java.util.LinkedList;
 
 public class TripCalcGUI extends JFrame{
-
+//Halllooooooo
     private static String routePath = System.getProperty("user.dir")+ "\\trunk\\src\\main\\resources\\routes.csv";
     private static String spritPath = System.getProperty("user.dir")+ "\\trunk\\src\\main\\resources\\sprit_db.csv";
     private Calendar cal = Calendar.getInstance();
