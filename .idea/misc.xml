@@ -157,6 +157,22 @@
     <list size="0" />
   </component>
   <component name="SvnBranchConfigurationManager">
+    <option name="myConfigurationMap">
+      <map>
+        <entry key="$PROJECT_DIR$">
+          <value>
+            <SvnBranchConfiguration>
+              <option name="branchUrls">
+                <list>
+                  <option value="https://github.com/alangmann/TripCalculator_Group2/branches" />
+                </list>
+              </option>
+              <option name="trunkUrl" value="https://github.com/alangmann/TripCalculator_Group2/trunk" />
+            </SvnBranchConfiguration>
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="mySupportsUserInfoFilter" value="true" />
   </component>
   <component name="SvnConfiguration">

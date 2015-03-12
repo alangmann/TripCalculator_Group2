@@ -27,8 +27,8 @@ public class TripCalcGUI extends JFrame{
 
     //C:\Users\Yvonne\4CHIF\Java\Enterprise Application\TripCalculator_Group2\trunk\src\main\resources
 
-    private static String routePath = System.getProperty("user.dir")+ "\\src\\main\\resources\\routes.csv";
-    private static String spritPath = System.getProperty("user.dir")+ "\\src\\main\\resources\\sprit_db.csv";
+    private static String rPath = System.getProperty("user.dir")+ "\\src\\main\\resources\\routes.csv";
+    private static String sPath = System.getProperty("user.dir")+ "\\src\\main\\resources\\sprit_db.csv";
     private Calendar cal = Calendar.getInstance();
     private int weekDay = cal.get(Calendar.DAY_OF_WEEK);
 
@@ -92,7 +92,7 @@ public class TripCalcGUI extends JFrame{
     private double cost = 0;
 
     @PostConstruct
-    public void setUP(String rPath, String sPath) throws HeadlessException
+    public void setUP() throws HeadlessException
     {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setSize(700, 250);
@@ -420,8 +420,12 @@ public class TripCalcGUI extends JFrame{
     public static void main(String[] args)
     {
        // new TripCalcGUI(routePath, spritPath).setVisible(true);
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring/spring-di-sample-annotation-context.xml");
+        System.out.println("aaaa");
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("resources/spring/spring-di-sample-annotation-context.xml");
+        System.out.println("bbbb");
+
         context.getBean("GUI", JFrame.class).setVisible(true);
+        System.out.println("cccc");
     }
 }
 
